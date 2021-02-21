@@ -20,12 +20,12 @@ class EditHabitScreen extends StatelessWidget {
                 }),
           ],
         ),
-        body: Center(child: HabitPage()));
+        body: Center(child: EditHabitPage()));
   }
 }
 
 // Screen Content
-class HabitPage extends StatelessWidget {
+class EditHabitPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
