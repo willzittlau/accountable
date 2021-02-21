@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-
   static final ThemeData lightTheme = ThemeData(
-    primaryColor: Colors.indigo,
-    primarySwatch: Colors.indigo,
-    accentColor: Colors.white,
-    brightness: Brightness.light,
-    scaffoldBackgroundColor: Colors.indigo[50],
-  );
+      primaryColor: Colors.brown,
+      primarySwatch: Colors.brown,
+      accentColor: Colors.white,
+      brightness: Brightness.light,
+      scaffoldBackgroundColor: Colors.brown[50],
+      hintColor: Colors.black,
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        foregroundColor: Colors.black,
+      ));
 
   static final ThemeData darkTheme = ThemeData(
-    primaryColor: Colors.indigo,
-    primarySwatch: whiteSwatch, // Used for changing DateTime Picker
-    accentColor: Colors.grey[600],
-    //cardColor: Colors.indigo[900], //If we want to change card background
-    brightness: Brightness.dark,
-  );
+      primaryColor: Colors.white,
+      primarySwatch: whiteSwatch, // Used for changing DateTime Picker
+      accentColor: Colors.grey[600],
+      brightness: Brightness.dark,
+      hintColor: Colors.white,
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        foregroundColor: Colors.white,
+      ));
 }
 
 const MaterialColor whiteSwatch = const MaterialColor(

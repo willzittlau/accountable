@@ -1,11 +1,12 @@
 import 'package:accountable/src/providers/app_theme.dart';
 import 'package:accountable/src/theme/styles.dart';
+import 'package:accountable/src/views/add_habit.dart';
+import 'package:accountable/src/views/habit.dart';
 import 'package:accountable/src/views/home.dart';
 import 'package:accountable/src/views/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-// Commented out sections are for Ads
 main() {
   runApp(App());
 }
@@ -27,6 +28,8 @@ class App extends StatelessWidget {
             routes: {
               '/': (context) => HomeScreen(),
               '/settings': (context) => SettingsScreen(),
+              '/add': (context) => AddHabitScreen(),
+              '/edit': (context) => EditHabitScreen(),
             },
           );
         }));
