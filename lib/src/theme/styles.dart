@@ -9,7 +9,7 @@ class AppTheme {
       scaffoldBackgroundColor: Colors.brown[50],
       hintColor: Colors.black,
       floatingActionButtonTheme: FloatingActionButtonThemeData(
-        foregroundColor: Colors.black,
+        foregroundColor: Colors.black.withOpacity(0.9),
       ));
 
   static final ThemeData darkTheme = ThemeData(
@@ -19,7 +19,7 @@ class AppTheme {
       brightness: Brightness.dark,
       hintColor: Colors.white,
       floatingActionButtonTheme: FloatingActionButtonThemeData(
-        foregroundColor: Colors.white,
+        foregroundColor: Colors.white.withOpacity(0.9),
       ));
 }
 
