@@ -10,7 +10,8 @@ class LoginScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         bottomOpacity: 0.0,
         elevation: 0.0,
-        title: AppBarTitle(),
+        title:
+            AppBarTitle(title: 'accountable.', subtitle: 'become a better you'),
         actions: <Widget>[],
       ),
       body: Center(child: LoginPage()),

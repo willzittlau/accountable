@@ -14,7 +14,8 @@ class SettingsScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         bottomOpacity: 0.0,
         elevation: 0.0,
-        title: AppBarTitle(),
+        title:
+            AppBarTitle(title: 'settings.', subtitle: 'edit your experience'),
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.close, color: Theme.of(context).hintColor),
@@ -24,13 +25,16 @@ class SettingsScreen extends StatelessWidget {
         ],
       ),
       body: Center(child: SettingsPage()),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
             Provider.of<ThemeNotifier>(context, listen: false)
                 .updateTheme(!context.read<ThemeNotifier>().isDarkMode);
           },
           tooltip: 'Change Theme',
-          child: Icon(
+          label: Text(
+              context.watch<ThemeNotifier>().isDarkMode ? 'Dark' : 'Light',
+              style: TextStyle(fontSize: 16)),
+          icon: Icon(
               (context.watch<ThemeNotifier>().isDarkMode
                   ? Icons.nights_stay_outlined
                   : Icons.wb_sunny_outlined),

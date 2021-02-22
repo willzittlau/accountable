@@ -11,7 +11,8 @@ class AddHabitScreen extends StatelessWidget {
           backgroundColor: Colors.transparent,
           bottomOpacity: 0.0,
           elevation: 0.0,
-          title: AppBarTitle(),
+          title: AppBarTitle(
+              title: 'something new.', subtitle: 'start tracking a new habit'),
           actions: <Widget>[
             IconButton(
                 icon: Icon(Icons.close, color: Theme.of(context).hintColor),
