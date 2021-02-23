@@ -1,3 +1,4 @@
+import 'package:fading_edge_scrollview/fading_edge_scrollview.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
 import 'package:accountable/src/widgets/habit.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class HomeScreen extends StatelessWidget {
               icon: Icon(Icons.more_horiz, color: Theme.of(context).hintColor))
         ],
       ),
-      body: HomePage(),
+      body: Container(child: MediaQuery.of(context).size.width < 800 ? HomePage() : Center(child:HomePage()) ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.pushNamed(context, '/add');
@@ -36,32 +37,37 @@ class HomeScreen extends StatelessWidget {
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        padding: EdgeInsets.fromLTRB(20, 0, 20, 60),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Column(
-              children: [
-                Habit(emoji: '🍺', name: 'Drinking', streak: 3),
-                Habit(emoji: '🧘', name: 'Yoga', streak: 10),
-                Habit(emoji: '🌱', name: 'Eat Vegan', streak: 77),
-                Habit(emoji: '🇫🇷', name: 'Learn French', streak: 200),
-                Habit(emoji: '🍆', name: '💦', streak: 11),
-              ],
-            ),
-            Column(
-              children: [
-                Habit(emoji: '💪', name: 'Workout', streak: 31),
-                Habit(emoji: '🙏', name: 'Meditate', streak: 1),
-                Habit(emoji: '💤', name: '8 Hrs Sleep', streak: 23),
-                Habit(emoji: '📚', name: 'Read a book', streak: 2),
-              ],
-            ),
-          ],
-        ),
-    ));
+        return SingleChildScrollView(
+            child: ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: 600),
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(20, 0, 20, 60),
+                  child: Row(
+                    mainAxisAlignment: MediaQuery.of(context).size.width < 800
+                        ? MainAxisAlignment.center
+                        : MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        children: [
+                          Habit(emoji: '🍺', name: 'Drinking', streak: 3),
+                          Habit(emoji: '🧘', name: 'Yoga', streak: 10),
+                          Habit(emoji: '🌱', name: 'Eat Vegan', streak: 77),
+                          Habit(
+                              emoji: '🇫🇷', name: 'Learn French', streak: 200),
+                          Habit(emoji: '🍆', name: '💦', streak: 11),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Habit(emoji: '💪', name: 'Workout', streak: 31),
+                          Habit(emoji: '🙏', name: 'Meditate', streak: 1),
+                          Habit(emoji: '💤', name: '8 Hrs Sleep', streak: 23),
+                          Habit(emoji: '📚', name: 'Read a book', streak: 2),
+                        ],
+                      ),
+                    ],
+                  ),
+                )));
   }
 }
