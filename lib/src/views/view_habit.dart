@@ -1,9 +1,8 @@
 import 'package:accountable/src/models/habit.dart';
-import 'package:accountable/src/providers/app_theme.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
 import 'package:accountable/src/widgets/habit_page_icon.dart';
+import 'package:accountable/src/widgets/habit_stats.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 // Screen Header
 class ViewHabitScreen extends StatelessWidget {
@@ -61,6 +60,7 @@ class ViewHabitPage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     HabitPageIcon(habit: test),
+                    HabitStats(habit: test),
                   ])));
     });
   }
