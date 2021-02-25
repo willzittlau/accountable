@@ -1,10 +1,12 @@
+import 'package:accountable/src/models/habit.dart';
 import 'package:accountable/src/providers/app_theme.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
+import 'package:accountable/src/widgets/habit_page_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 // Screen Header
-class SettingsScreen extends StatelessWidget {
+class ViewHabitScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,8 +15,8 @@ class SettingsScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         bottomOpacity: 0.0,
         elevation: 0.0,
-        title:
-            AppBarTitle(title: 'settings.', subtitle: 'edit your experience'),
+        title: AppBarTitle(
+            title: 'statistics.', subtitle: 'look how far you\'ve come'),
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.close, color: Theme.of(context).hintColor),
@@ -23,20 +25,14 @@ class SettingsScreen extends StatelessWidget {
               }),
         ],
       ),
-      body: SettingsPage(),
+      body: Center(child: ViewHabitPage()),
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
-            Provider.of<ThemeNotifier>(context, listen: false)
-                .updateTheme(!context.read<ThemeNotifier>().isDarkMode);
+            Navigator.pushNamed(context, '/edit');
           },
           tooltip: 'Change Theme',
-          label: Text(
-              context.watch<ThemeNotifier>().isDarkMode ? 'Dark' : 'Light',
-              style: TextStyle(fontSize: 16)),
-          icon: Icon(
-              (context.watch<ThemeNotifier>().isDarkMode
-                  ? Icons.nights_stay_outlined
-                  : Icons.wb_sunny_outlined),
+          label: Text('Edit', style: TextStyle(fontSize: 16)),
+          icon: Icon((Icons.edit_outlined),
               color: Theme.of(context).hintColor)),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
@@ -44,25 +40,27 @@ class SettingsScreen extends StatelessWidget {
 }
 
 // Screen Content
-class SettingsPage extends StatelessWidget {
+class ViewHabitPage extends StatelessWidget {
+  final Habit test = Habit(
+      name: 'Drinks',
+      emoji: '🍺',
+      notes: 'hey',
+      streak: 1,
+      average: 1,
+      best: 1,
+      numResets: 1);
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       return SingleChildScrollView(
           child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: 800),
+              constraints: BoxConstraints(
+                  maxWidth: 800, minHeight: constraints.maxHeight),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
-                    Padding(
-                        padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
-                        child: Center(
-                            child: Image(
-                                height: 200,
-                                width: 200,
-                                image: context.watch<ThemeNotifier>().isDarkMode
-                                    ? AssetImage('assets/img/logo.png')
-                                    : AssetImage('assets/img/logo-light.png'))))
+                    HabitPageIcon(habit: test),
                   ])));
     });
   }

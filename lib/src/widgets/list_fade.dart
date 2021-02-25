@@ -22,8 +22,8 @@ class ListFade extends StatelessWidget {
                 ],
                 stops: [
                   0.0,
-                  0.05,
-                  0.95,
+                  0.03,
+                  0.97,
                   1.0
                 ], // 5% black, 90% transparent, 5% black
               ).createShader(rect);

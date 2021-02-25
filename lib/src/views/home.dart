@@ -1,5 +1,6 @@
+import 'package:accountable/src/models/habit.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
-import 'package:accountable/src/widgets/habit.dart';
+import 'package:accountable/src/widgets/habit_list_icon.dart';
 import 'package:accountable/src/widgets/list_fade.dart';
 import 'package:flutter/material.dart';
 
@@ -39,6 +40,14 @@ class HomeScreen extends StatelessWidget {
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Habit test = Habit(
+        name: 'Drinks',
+        emoji: '🍺',
+        notes: 'hey',
+        streak: 1,
+        average: 1,
+        best: 1,
+        numResets: 1);
     return ListFade(
         child: SingleChildScrollView(
             child: ConstrainedBox(
@@ -57,8 +66,7 @@ class HomePage extends StatelessWidget {
                           ListView.builder(
                             itemCount: 5,
                             itemBuilder: (BuildContext context, int index) {
-                              return Habit(
-                                  emoji: '🍺', name: 'Drinking', streak: 3);
+                              return HabitListIcon(habit: test);
                             },
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
@@ -77,8 +85,7 @@ class HomePage extends StatelessWidget {
                           ListView.builder(
                             itemCount: 5,
                             itemBuilder: (BuildContext context, int index) {
-                              return Habit(
-                                  emoji: '🍺', name: 'Drinking', streak: 3);
+                              return HabitListIcon(habit: test);
                             },
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),

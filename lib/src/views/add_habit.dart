@@ -34,11 +34,10 @@ class AddHabitPage extends StatelessWidget {
           child: ConstrainedBox(
               constraints: BoxConstraints(
                   maxWidth: 800, minHeight: constraints.maxHeight),
-              child: IntrinsicHeight(
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
-                      children: <Widget>[]))));
+                      children: <Widget>[])));
     });
   }
 }

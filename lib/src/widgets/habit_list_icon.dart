@@ -1,18 +1,17 @@
+import 'package:accountable/src/models/habit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-class Habit extends StatelessWidget {
-  final String emoji;
-  final String name;
-  final int streak;
+class HabitListIcon extends StatelessWidget {
+  final Habit habit;
 
-  Habit({this.emoji, this.name, this.streak});
+  HabitListIcon({this.habit});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, '/edit');
+          Navigator.pushNamed(context, '/view');
         },
         child: Padding(
             padding: EdgeInsets.all(20),
@@ -29,20 +28,20 @@ class Habit extends StatelessWidget {
                           Padding(
                               padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                               child: Text(
-                                emoji,
+                                habit.emoji,
                                 style: TextStyle(
                                     fontSize: 36,
                                     color: Theme.of(context).hintColor),
                               )),
                           Spacer(),
-                          Text(name,
+                          Text(habit.name,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 14,
                                   color: Theme.of(context).hintColor)),
                           Padding(
                               padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                              child: Text('✨ ' + streak.toString(),
+                              child: Text('✨ ' + habit.streak.toString(),
                                   style: TextStyle(
                                       fontSize: 12,
                                       color: Theme.of(context).hintColor))),
