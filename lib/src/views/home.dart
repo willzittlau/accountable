@@ -40,14 +40,6 @@ class HomeScreen extends StatelessWidget {
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Habit test = Habit(
-        name: 'Drinks',
-        emoji: '🍺',
-        notes: 'hey',
-        streak: 1,
-        average: 1,
-        best: 1,
-        numResets: 1);
     return ListFade(
         child: SingleChildScrollView(
             child: ConstrainedBox(
@@ -64,36 +56,34 @@ class HomePage extends StatelessWidget {
                           child: Column(
                         children: [
                           ListView.builder(
-                            itemCount: 5,
+                            itemCount: habits.length,
                             itemBuilder: (BuildContext context, int index) {
-                              return HabitListIcon(habit: test);
+                              if (index.isEven) {
+                                return HabitListIcon(habit: habits[index]);
+                              } else {
+                                return Container();
+                              }
                             },
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
                           ),
-                          // Habit(emoji: '🍺', name: 'Drinking', streak: 3),
-                          // Habit(emoji: '🧘', name: 'Yoga', streak: 10),
-                          // Habit(emoji: '🌱', name: 'Eat Vegan', streak: 77),
-                          // Habit(
-                          //     emoji: '🇫🇷', name: 'Learn French', streak: 200),
-                          // Habit(emoji: '🍆', name: '💦', streak: 11),
                         ],
                       )),
                       Expanded(
                           child: Column(
                         children: [
                           ListView.builder(
-                            itemCount: 5,
+                            itemCount: habits.length,
                             itemBuilder: (BuildContext context, int index) {
-                              return HabitListIcon(habit: test);
+                              if (index.isOdd) {
+                                return HabitListIcon(habit: habits[index]);
+                              } else {
+                                return Container();
+                              }
                             },
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
                           ),
-                          // Habit(emoji: '💪', name: 'Workout', streak: 31),
-                          // Habit(emoji: '🙏', name: 'Meditate', streak: 1),
-                          // Habit(emoji: '💤', name: '8 Hrs Sleep', streak: 23),
-                          // Habit(emoji: '📚', name: 'Read a book', streak: 2),
                         ],
                       )),
                     ],
@@ -101,3 +91,78 @@ class HomePage extends StatelessWidget {
                 ))));
   }
 }
+
+List<Habit> habits = [
+  Habit(
+      name: 'Drinking',
+      emoji: '🍺',
+      notes: 'Drinking',
+      streak: 1,
+      average: 2,
+      best: 3,
+      numResets: 4),
+  Habit(
+      name: 'Yoga',
+      emoji: '🧘',
+      notes: 'Yoga',
+      streak: 4,
+      average: 2,
+      best: 1,
+      numResets: 2),
+  Habit(
+      name: 'Vegan',
+      emoji: '🌱',
+      notes: 'Vegan',
+      streak: 3,
+      average: 41,
+      best: 15,
+      numResets: 13),
+  Habit(
+      name: 'Code',
+      emoji: '👨‍💻',
+      notes: 'Code',
+      streak: 11,
+      average: 11,
+      best: 11,
+      numResets: 11),
+  Habit(
+      name: 'Workout',
+      emoji: '💪',
+      notes: 'workout',
+      streak: 19,
+      average: 91,
+      best: 19,
+      numResets: 91),
+  Habit(
+      name: 'Meditate',
+      emoji: '🙏',
+      notes: 'Meditate',
+      streak: 15,
+      average: 51,
+      best: 15,
+      numResets: 51),
+  Habit(
+      name: 'Sleep',
+      emoji: '💤',
+      notes: 'Sleep',
+      streak: 1,
+      average: 1,
+      best: 1,
+      numResets: 1),
+  Habit(
+      name: 'Read',
+      emoji: '📚',
+      notes: 'Reading',
+      streak: 1,
+      average: 1,
+      best: 1,
+      numResets: 1),
+  Habit(
+      name: 'French',
+      emoji: '🇫🇷',
+      notes: 'Learn French',
+      streak: 1,
+      average: 1,
+      best: 1,
+      numResets: 1),
+];
