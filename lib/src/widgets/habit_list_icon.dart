@@ -1,4 +1,5 @@
 import 'package:accountable/src/models/habit.dart';
+import 'package:accountable/src/views/view_habit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -11,7 +12,11 @@ class HabitListIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, '/view');
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ViewHabitScreen(habit: habit),
+              ));
         },
         child: Padding(
             padding: EdgeInsets.all(20),

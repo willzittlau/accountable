@@ -1,8 +1,11 @@
+import 'package:accountable/src/models/habit.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
 import 'package:flutter/material.dart';
 
 // Screen Header
 class EditHabitScreen extends StatelessWidget {
+    final Habit habit;
+  EditHabitScreen({this.habit});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +25,7 @@ class EditHabitScreen extends StatelessWidget {
               })
         ],
       ),
-      body: Center(child: EditHabitPage()),
+      body: Center(child: EditHabitPage(habit:habit)),
       floatingActionButton: FloatingActionButton(
           onPressed: () {},
           tooltip: 'Add a habit',
@@ -33,6 +36,8 @@ class EditHabitScreen extends StatelessWidget {
 
 // Screen Content
 class EditHabitPage extends StatelessWidget {
+    final Habit habit;
+  EditHabitPage({this.habit});
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
@@ -43,7 +48,7 @@ class EditHabitPage extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
-                  children: <Widget>[])));
+                  children: <Widget>[Text(habit.best.toString())])));
     });
   }
 }

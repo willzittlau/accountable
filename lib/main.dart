@@ -30,8 +30,6 @@ class App extends StatelessWidget {
               '/': (context) => HomeScreen(),
               '/settings': (context) => SettingsScreen(),
               '/add': (context) => AddHabitScreen(),
-              '/view': (context) => ViewHabitScreen(),
-              '/edit': (context) => EditHabitScreen(),
             },
           );
         }));

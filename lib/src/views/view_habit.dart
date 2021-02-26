@@ -1,4 +1,5 @@
 import 'package:accountable/src/models/habit.dart';
+import 'package:accountable/src/views/edit_habit.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
 import 'package:accountable/src/widgets/habit_page_icon.dart';
 import 'package:accountable/src/widgets/habit_stats.dart';
@@ -6,6 +7,8 @@ import 'package:flutter/material.dart';
 
 // Screen Header
 class ViewHabitScreen extends StatelessWidget {
+  final Habit habit;
+  ViewHabitScreen({this.habit});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,15 +27,19 @@ class ViewHabitScreen extends StatelessWidget {
               }),
         ],
       ),
-      body: Center(child: ViewHabitPage()),
+      body: Center(child: ViewHabitPage(habit: habit)),
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
-            Navigator.pushNamed(context, '/edit');
+                      Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => EditHabitScreen(habit: habit),
+              ));
           },
           tooltip: 'Change Theme',
           label: Text('Edit', style: TextStyle(fontSize: 16)),
-          icon: Icon((Icons.edit_outlined),
-              color: Theme.of(context).hintColor)),
+          icon:
+              Icon((Icons.edit_outlined), color: Theme.of(context).hintColor)),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
@@ -40,14 +47,9 @@ class ViewHabitScreen extends StatelessWidget {
 
 // Screen Content
 class ViewHabitPage extends StatelessWidget {
-  final Habit test = Habit(
-      name: 'Drinks',
-      emoji: '🍺',
-      notes: 'hey',
-      streak: 1,
-      average: 1,
-      best: 1,
-      numResets: 1);
+  final Habit habit;
+
+  ViewHabitPage({this.habit});
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
@@ -59,8 +61,8 @@ class ViewHabitPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
-                    HabitPageIcon(habit: test),
-                    HabitStats(habit: test),
+                    HabitPageIcon(habit: habit),
+                    HabitStats(habit: habit),
                   ])));
     });
   }
