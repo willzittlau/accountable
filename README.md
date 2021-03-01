@@ -1,6 +1,8 @@
-# accountable
+# accountable. - become a better you
 
-A new Flutter project.
+A cross platform flutter app for habit tracking / days since with extra accountability. Coming soon!
+
+www.getaccountable.ca
 
 ## Getting Started
 
