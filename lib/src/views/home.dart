@@ -1,4 +1,4 @@
-import 'package:accountable/src/models/habit.dart';
+import 'package:accountable/src/models/globals.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
 import 'package:accountable/src/widgets/habit_list_icon.dart';
 import 'package:accountable/src/widgets/list_fade.dart';
@@ -10,6 +10,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         bottomOpacity: 0.0,
         elevation: 0.0,
@@ -91,78 +92,3 @@ class HomePage extends StatelessWidget {
                 ))));
   }
 }
-
-List<Habit> habits = [
-  Habit(
-      name: 'Drinking',
-      emoji: '🍺',
-      notes: 'Drinking',
-      streak: 1,
-      average: 2,
-      best: 3,
-      numResets: 4),
-  Habit(
-      name: 'Yoga',
-      emoji: '🧘',
-      notes: 'Yoga',
-      streak: 4,
-      average: 2,
-      best: 1,
-      numResets: 2),
-  Habit(
-      name: 'Vegan',
-      emoji: '🌱',
-      notes: 'Vegan',
-      streak: 3,
-      average: 41,
-      best: 15,
-      numResets: 13),
-  Habit(
-      name: 'Code',
-      emoji: '👨‍💻',
-      notes: 'Code',
-      streak: 11,
-      average: 11,
-      best: 11,
-      numResets: 11),
-  Habit(
-      name: 'Workout',
-      emoji: '💪',
-      notes: 'workout',
-      streak: 19,
-      average: 91,
-      best: 19,
-      numResets: 91),
-  Habit(
-      name: 'Meditate',
-      emoji: '🙏',
-      notes: 'Meditate',
-      streak: 15,
-      average: 51,
-      best: 15,
-      numResets: 51),
-  Habit(
-      name: 'Sleep',
-      emoji: '💤',
-      notes: 'Sleep',
-      streak: 1,
-      average: 1,
-      best: 1,
-      numResets: 1),
-  Habit(
-      name: 'Read',
-      emoji: '📚',
-      notes: 'Reading',
-      streak: 1,
-      average: 1,
-      best: 1,
-      numResets: 1),
-  Habit(
-      name: 'French',
-      emoji: '🇫🇷',
-      notes: 'Learn French',
-      streak: 1,
-      average: 1,
-      best: 1,
-      numResets: 1),
-];

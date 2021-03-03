@@ -14,7 +14,7 @@ class AppTheme {
 
   static final ThemeData darkTheme = ThemeData(
       primaryColor: Colors.white,
-      primarySwatch: whiteSwatch, // Used for changing DateTime Picker
+      primarySwatch: Colors.brown, // Used for changing DateTime Picker
       accentColor: Colors.grey[600],
       brightness: Brightness.dark,
       hintColor: Colors.white,

@@ -1,10 +1,11 @@
 import 'package:accountable/src/models/habit.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
+import 'package:accountable/src/widgets/delete_habit_dialog.dart';
 import 'package:flutter/material.dart';
 
 // Screen Header
 class EditHabitScreen extends StatelessWidget {
-    final Habit habit;
+  final Habit habit;
   EditHabitScreen({this.habit});
   @override
   Widget build(BuildContext context) {
@@ -25,9 +26,22 @@ class EditHabitScreen extends StatelessWidget {
               })
         ],
       ),
-      body: Center(child: EditHabitPage(habit:habit)),
+      body: Center(child: EditHabitPage(habit: habit)),
       floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return DeleteHabitDialog(
+                    title: "Delete this Habit?",
+                    description:
+                        "Are you sure you want to delete this habit? This action cannot be undone.",
+                    btnText: "Cancel",
+                    btn2Text: "Yes",
+                    habit: habit,
+                  );
+                });
+          },
           tooltip: 'Add a habit',
           child: Icon(Icons.delete_outline)),
     );
@@ -36,7 +50,7 @@ class EditHabitScreen extends StatelessWidget {
 
 // Screen Content
 class EditHabitPage extends StatelessWidget {
-    final Habit habit;
+  final Habit habit;
   EditHabitPage({this.habit});
   @override
   Widget build(BuildContext context) {
