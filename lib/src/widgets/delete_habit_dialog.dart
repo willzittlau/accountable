@@ -30,66 +30,60 @@ class DeleteHabitDialog extends StatelessWidget {
   }
 
   contentBox(context) {
-    return Stack(
-      children: <Widget>[
-        Container(
-          padding:
-              EdgeInsets.only(left: 20, top: 40, right: 20, bottom: 20),
-          decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black, offset: Offset(0, 10), blurRadius: 10),
-              ]),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text(
-                title,
-                style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                description,
-                style: TextStyle(fontSize: 14, color: Colors.black),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: Text(
-                          btnText,
-                          style: TextStyle(fontSize: 18),
-                        )),
-                  TextButton(
-                        onPressed: () {
-                          habits.remove(this.habit);
-                          Navigator.of(context).pop();
-                          Navigator.pushNamed(context, '/');
-                        },
-                        child: Text(
-                          btn2Text,
-                          style: TextStyle(fontSize: 18),
-                        )),
-                ],
-              )
-            ],
+    return Container(
+      padding: EdgeInsets.only(left: 20, top: 40, right: 20, bottom: 20),
+      decoration: BoxDecoration(
+          shape: BoxShape.rectangle,
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.black, offset: Offset(0, 10), blurRadius: 10),
+          ]),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Text(
+            title,
+            style: TextStyle(
+                fontSize: 22, fontWeight: FontWeight.w600, color: Colors.black),
           ),
-        ),
-      ],
+          SizedBox(
+            height: 20,
+          ),
+          Text(
+            description,
+            style: TextStyle(fontSize: 14, color: Colors.black),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text(
+                    btnText,
+                    style: TextStyle(fontSize: 18),
+                  )),
+              TextButton(
+                  onPressed: () {
+                    habits.remove(this.habit);
+                    Navigator.of(context).pop();
+                    Navigator.pushNamed(context, '/');
+                  },
+                  child: Text(
+                    btn2Text,
+                    style: TextStyle(fontSize: 18),
+                  )),
+            ],
+          )
+        ],
+      ),
     );
   }
 }
