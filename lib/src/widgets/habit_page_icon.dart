@@ -1,4 +1,5 @@
 import 'package:accountable/src/models/habit.dart';
+import 'package:accountable/src/views/edit_habit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -10,7 +11,13 @@ class HabitPageIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => EditHabitScreen(habit: habit),
+              ));
+        },
         child: Padding(
             padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
             child: MouseRegion(
