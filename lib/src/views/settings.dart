@@ -49,21 +49,19 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       return SingleChildScrollView(
-          child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: 800),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(
-                        padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
-                        child: Center(
-                            child: Image(
-                                height: 200,
-                                width: 200,
-                                image: context.watch<ThemeNotifier>().isDarkMode
-                                    ? AssetImage('assets/img/logo.png')
-                                    : AssetImage('assets/img/logo-light.png'))))
-                  ])));
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+            Padding(
+                padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+                child: Center(
+                    child: Image(
+                        height: 200,
+                        width: 200,
+                        image: context.watch<ThemeNotifier>().isDarkMode
+                            ? AssetImage('assets/img/logo.png')
+                            : AssetImage('assets/img/logo-light.png'))))
+          ]));
     });
   }
 }

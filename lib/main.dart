@@ -1,8 +1,6 @@
 import 'package:accountable/src/providers/app_theme.dart';
 import 'package:accountable/src/theme/styles.dart';
 import 'package:accountable/src/views/add_habit.dart';
-import 'package:accountable/src/views/edit_habit.dart';
-import 'package:accountable/src/views/view_habit.dart';
 import 'package:accountable/src/views/home.dart';
 import 'package:accountable/src/views/settings.dart';
 import 'package:flutter/material.dart';

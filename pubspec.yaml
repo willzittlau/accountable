@@ -34,8 +34,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  integration_test:
-    sdk: flutter
+  # integration_test:
+  #   sdk: flutter
   flutter_launcher_icons: ^0.9.0
 
 flutter_icons:
@@ -70,6 +70,11 @@ flutter:
     - family: CooperBlack
       fonts:
         - asset: assets/fonts/Cooper-Black-Regular.ttf
+    - family: Yrsa
+      fonts:
+        - asset: assets/fonts/Yrsa-Medium.ttf
+        - asset: assets/fonts/Yrsa-Bold.ttf
+          weight: 700
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

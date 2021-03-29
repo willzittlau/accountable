@@ -17,7 +17,10 @@ class AppBarTitle extends StatelessWidget {
             color: Theme.of(context).hintColor),
       ),
       Text(subtitle,
-          style: TextStyle(fontSize: 14, color: Theme.of(context).hintColor)),
+          style: TextStyle(
+              fontFamily: 'Yrsa',
+              fontSize: 16,
+              color: Theme.of(context).hintColor)),
     ]);
   }
 }

@@ -3,6 +3,7 @@ import 'package:accountable/src/views/edit_habit.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
 import 'package:accountable/src/widgets/habit_page_icon.dart';
 import 'package:accountable/src/widgets/habit_stats.dart';
+import 'package:accountable/src/widgets/list_fade.dart';
 import 'package:flutter/material.dart';
 
 // Screen Header
@@ -30,11 +31,11 @@ class ViewHabitScreen extends StatelessWidget {
       body: Center(child: ViewHabitPage(habit: habit)),
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
-                      Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => EditHabitScreen(habit: habit),
-              ));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => EditHabitScreen(habit: habit),
+                ));
           },
           tooltip: 'Change Theme',
           label: Text('Edit', style: TextStyle(fontSize: 16)),
@@ -53,17 +54,23 @@ class ViewHabitPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      return SingleChildScrollView(
-          child: ConstrainedBox(
-              constraints: BoxConstraints(
-                  maxWidth: 800, minHeight: constraints.maxHeight),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: <Widget>[
-                    HabitPageIcon(habit: habit),
-                    HabitStats(habit: habit),
-                  ])));
+      return Padding(
+          padding: EdgeInsets.fromLTRB(0, 0, 0, 80),
+          child: ListFade(
+              child: SingleChildScrollView(
+                  child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                          maxWidth: 800,
+                          minHeight: constraints.maxHeight - 80),
+                      child: Padding(
+                          padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.max,
+                              children: <Widget>[
+                                HabitPageIcon(habit: habit),
+                                HabitStats(habit: habit),
+                              ]))))));
     });
   }
 }
