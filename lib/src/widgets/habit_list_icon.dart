@@ -31,21 +31,20 @@ class HabitListIcon extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Padding(
-                              padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                              padding: EdgeInsets.fromLTRB(0, 10, 0, 2),
                               child: Text(
                                 habit.emoji,
                                 style: TextStyle(
                                     fontSize: 36,
                                     color: Theme.of(context).hintColor),
                               )),
-                          Spacer(),
                           Text(habit.name,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 14,
                                   color: Theme.of(context).hintColor)),
                           Padding(
-                              padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                              padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                               child: Text('✨ ' + habit.streak.toString(),
                                   style: TextStyle(
                                       fontSize: 12,
