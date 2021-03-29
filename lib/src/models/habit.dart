@@ -1,12 +1,19 @@
-class Habit  {
-  final String emoji;
-  final String name;
-  final String notes;
-  final int streak;
-  final int average;
-  final int best;
-  final int numResets;
+class Habit {
+  String emoji;
+  String name;
+  String notes;
+  int streak;
+  int average;
+  int best;
+  int numResets;
+  DateTime startDate;
 
-  Habit({this.emoji, this.name, this.streak, this.average, this.best, this.notes, this.numResets});
-  
+  Habit({emoji, this.name, streak, average, best, notes, numResets, startDate})
+      : emoji = emoji ?? name[0],
+        streak = streak ?? 0,
+        average = average ?? 0,
+        best = best ?? 0,
+        notes = notes ?? '',
+        numResets = numResets ?? 0,
+        startDate = startDate ?? DateTime.now();
 }

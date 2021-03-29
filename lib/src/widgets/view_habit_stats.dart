@@ -1,10 +1,10 @@
 import 'package:accountable/src/models/habit.dart';
 import 'package:flutter/material.dart';
 
-class HabitStats extends StatelessWidget {
+class ViewHabitStats extends StatelessWidget {
   final Habit habit;
 
-  HabitStats({this.habit});
+  ViewHabitStats({this.habit});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class HabitStats extends StatelessWidget {
             text: TextSpan(
               children: <TextSpan>[
                 new TextSpan(
-                    text: 'Current: ',
+                    text: 'Current Streak: ',
                     style: TextStyle(
                         fontFamily: 'Yrsa',
                         fontSize: 24,

@@ -1,8 +1,8 @@
 import 'package:accountable/src/models/habit.dart';
 import 'package:accountable/src/views/edit_habit.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
-import 'package:accountable/src/widgets/habit_page_icon.dart';
-import 'package:accountable/src/widgets/habit_stats.dart';
+import 'package:accountable/src/widgets/view_habit_page_icon.dart';
+import 'package:accountable/src/widgets/view_habit_stats.dart';
 import 'package:accountable/src/widgets/list_fade.dart';
 import 'package:flutter/material.dart';
 
@@ -60,16 +60,15 @@ class ViewHabitPage extends StatelessWidget {
               child: SingleChildScrollView(
                   child: ConstrainedBox(
                       constraints: BoxConstraints(
-                          maxWidth: 800,
-                          minHeight: constraints.maxHeight - 80),
+                          maxWidth: 800, minHeight: constraints.maxHeight - 80),
                       child: Padding(
                           padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisSize: MainAxisSize.max,
                               children: <Widget>[
-                                HabitPageIcon(habit: habit),
-                                HabitStats(habit: habit),
+                                ViewHabitPageIcon(habit: habit),
+                                ViewHabitStats(habit: habit),
                               ]))))));
     });
   }

@@ -38,7 +38,7 @@ class DeleteHabitDialog extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-                color: Colors.black, offset: Offset(0, 10), blurRadius: 10),
+                color: Colors.black, offset: Offset(1, 5), blurRadius: 10),
           ]),
       child: Column(
         mainAxisSize: MainAxisSize.min,

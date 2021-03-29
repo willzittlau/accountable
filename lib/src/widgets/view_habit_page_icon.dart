@@ -3,10 +3,10 @@ import 'package:accountable/src/views/edit_habit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-class HabitPageIcon extends StatelessWidget {
+class ViewHabitPageIcon extends StatelessWidget {
   final Habit habit;
 
-  HabitPageIcon({this.habit});
+  ViewHabitPageIcon({this.habit});
 
   @override
   Widget build(BuildContext context) {

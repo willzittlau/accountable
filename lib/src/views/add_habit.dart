@@ -1,3 +1,6 @@
+import 'package:accountable/src/models/habit.dart';
+import 'package:accountable/src/widgets/add_habit_page_icon.dart';
+import 'package:accountable/src/widgets/add_habit_stats.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
 import 'package:flutter/material.dart';
 
@@ -27,6 +30,7 @@ class AddHabitScreen extends StatelessWidget {
 
 // Screen Content
 class AddHabitPage extends StatelessWidget {
+  final habit =  Habit(name: ' ');
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
@@ -34,10 +38,13 @@ class AddHabitPage extends StatelessWidget {
           child: ConstrainedBox(
               constraints: BoxConstraints(
                   maxWidth: 800, minHeight: constraints.maxHeight),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.max,
-                      children: <Widget>[])));
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    AddHabitPageIcon(habit: habit),
+                    AddHabitStats(habit: habit)
+                  ])));
     });
   }
 }

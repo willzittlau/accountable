@@ -35,7 +35,7 @@ class EditHabitScreen extends StatelessWidget {
                   return DeleteHabitDialog(
                     title: "Delete this Habit?",
                     description:
-                        "Are you sure you want to delete this habit? This action cannot be undone.",
+                        "Are you sure you want to delete '${habit.name}\'? This action cannot be undone.",
                     btnText: "Cancel",
                     btn2Text: "Yes",
                     habit: habit,
