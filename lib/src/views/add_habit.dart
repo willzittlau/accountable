@@ -1,3 +1,4 @@
+import 'package:accountable/src/models/globals.dart';
 import 'package:accountable/src/models/habit.dart';
 import 'package:accountable/src/widgets/add_habit_page_icon.dart';
 import 'package:accountable/src/widgets/add_habit_stats.dart';
@@ -6,9 +7,34 @@ import 'package:flutter/material.dart';
 
 // Screen Header
 class AddHabitScreen extends StatelessWidget {
+  final habit = new Habit();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        floatingActionButton: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            FloatingActionButton(
+                heroTag: "close",
+                backgroundColor: Colors.red,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(Icons.close, color: Theme.of(context).hintColor)),
+            FloatingActionButton(
+              heroTag: "check",
+              backgroundColor: Colors.green,
+              onPressed: () {
+                habits.add(habit);
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/');
+              },
+              child: Icon(Icons.check, color: Theme.of(context).hintColor),
+            ),
+          ],
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         appBar: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Colors.transparent,
@@ -24,13 +50,14 @@ class AddHabitScreen extends StatelessWidget {
                 }),
           ],
         ),
-        body: Center(child: AddHabitPage()));
+        body: Center(child: AddHabitPage(habit: habit)));
   }
 }
 
 // Screen Content
 class AddHabitPage extends StatelessWidget {
-  final habit =  Habit(name: ' ');
+  final Habit habit;
+  AddHabitPage({this.habit});
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {

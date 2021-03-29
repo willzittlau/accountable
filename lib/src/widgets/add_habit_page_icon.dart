@@ -4,11 +4,16 @@ import 'package:flutter/rendering.dart';
 
 class AddHabitPageIcon extends StatelessWidget {
   final Habit habit;
-
+  final TextEditingController _controller = TextEditingController();
   AddHabitPageIcon({this.habit});
 
   @override
   Widget build(BuildContext context) {
+    _controller.addListener(() {
+      final String text = _controller.text;
+      habit.name = text;
+      habit.emoji = (true) ? habit.name.toUpperCase()[0] : habit.emoji;
+    });
     return Padding(
         padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
         child: MouseRegion(
@@ -25,7 +30,7 @@ class AddHabitPageIcon extends StatelessWidget {
                         child: IconButton(
                           icon: const Icon(Icons.add_circle_outline),
                           color: Theme.of(context).hintColor,
-                          iconSize: 64,
+                          iconSize: 72,
                           onPressed: () {},
                         ),
                       ),
@@ -33,9 +38,7 @@ class AddHabitPageIcon extends StatelessWidget {
                         width: 120.0,
                         height: 40,
                         child: TextField(
-                            onSubmitted: (String value) {
-                              habit.name = value;
-                            },
+                            controller: _controller,
                             textAlign: TextAlign.center,
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(
