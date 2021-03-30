@@ -29,10 +29,12 @@ class TextFieldWidget extends State {
     _controller.addListener(() {
       // Sets emoji to first letter of name entry if null
       final String text = _controller.text;
-      habit.name = text;
-      habit.emoji.isEmpty
-          ? habit.emoji = habit.name.toUpperCase()[0]
-          : habit.emoji = habit.emoji;
+      if (text.length > 0) {
+        habit.name = text;
+        habit.emoji.isEmpty
+            ? habit.emoji = habit.name.toUpperCase()[0]
+            : habit.emoji = habit.emoji;
+      }
     });
     return Container(
       width: 120.0,
@@ -48,6 +50,10 @@ class TextFieldWidget extends State {
           textAlign: TextAlign.center,
           decoration: InputDecoration(
               border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(15))),
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: Theme.of(context).hintColor, width: 2.0),
                   borderRadius: BorderRadius.all(Radius.circular(15))),
               hintText: 'Add a Name',
               contentPadding: EdgeInsets.all(8))),

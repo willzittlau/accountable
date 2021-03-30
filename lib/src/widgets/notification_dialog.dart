@@ -1,20 +1,14 @@
 import 'dart:ui';
-import 'package:accountable/src/models/habit.dart';
-import 'package:accountable/src/models/globals.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class DeleteHabitDialog extends StatelessWidget {
-  final String title, description, btnText, btn2Text;
-  final Habit habit;
+class NotificationDialog extends StatelessWidget {
+  final String title, description;
 
-  const DeleteHabitDialog({
+  const NotificationDialog({
     Key key,
     this.title,
     this.description,
-    this.btnText,
-    this.btn2Text,
-    this.habit,
   }) : super(key: key);
 
   @override
@@ -61,24 +55,14 @@ class DeleteHabitDialog extends StatelessWidget {
             height: 20,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
                   child: Text(
-                    btnText,
-                    style: TextStyle(fontSize: 18),
-                  )),
-              TextButton(
-                  onPressed: () {
-                    habits.remove(this.habit);
-                    Navigator.of(context).pop();
-                    Navigator.pushNamed(context, '/');
-                  },
-                  child: Text(
-                    btn2Text,
+                    'Okay',
                     style: TextStyle(fontSize: 18),
                   )),
             ],
