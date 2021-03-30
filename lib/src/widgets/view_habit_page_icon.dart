@@ -30,14 +30,13 @@ class ViewHabitPageIcon extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Padding(
-                              padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                              padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
                               child: Text(
                                 habit.emoji,
                                 style: TextStyle(
-                                    fontSize: 48,
+                                    fontSize: 56,
                                     color: Theme.of(context).hintColor),
                               )),
-                          Spacer(),
                           Text(habit.name,
                               textAlign: TextAlign.center,
                               style: TextStyle(

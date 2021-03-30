@@ -1,9 +1,11 @@
 import 'package:accountable/src/models/globals.dart';
 import 'package:accountable/src/models/habit.dart';
-import 'package:accountable/src/widgets/add_habit_page_icon.dart';
-import 'package:accountable/src/widgets/add_habit_stats.dart';
+import 'package:accountable/src/providers/emoji_keyboard.dart';
+import 'package:accountable/src/widgets/add_habit/add_habit_page_icon.dart';
+import 'package:accountable/src/widgets/add_habit/add_habit_stats.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 // Screen Header
 class AddHabitScreen extends StatelessWidget {
@@ -17,14 +19,12 @@ class AddHabitScreen extends StatelessWidget {
           children: <Widget>[
             FloatingActionButton(
                 heroTag: "close",
-                backgroundColor: Colors.red,
                 onPressed: () {
                   Navigator.pop(context);
                 },
                 child: Icon(Icons.close, color: Theme.of(context).hintColor)),
             FloatingActionButton(
               heroTag: "check",
-              backgroundColor: Colors.green,
               onPressed: () {
                 habits.add(habit);
                 Navigator.pop(context);
@@ -70,7 +70,10 @@ class AddHabitPage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     AddHabitPageIcon(habit: habit),
-                    AddHabitStats(habit: habit)
+                    Offstage(
+                      child: AddHabitStats(habit: habit),
+                      offstage: context.watch<KeyboardNotifier>().showKeyboard,
+                    )
                   ])));
     });
   }
