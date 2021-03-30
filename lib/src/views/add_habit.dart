@@ -28,7 +28,7 @@ class AddHabitScreen extends StatelessWidget {
                       Navigator.pushNamed(context, '/');
                     },
                     child:
-                        Icon(Icons.close, color: Theme.of(context).hintColor)),
+                        Icon(Icons.arrow_back, color: Theme.of(context).hintColor)),
                 FloatingActionButton(
                   heroTag: "check",
                   onPressed: () {

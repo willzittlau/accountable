@@ -43,13 +43,13 @@ class EditHabitScreen extends StatelessWidget {
                 heroTag: "acceptChanges",
                 onPressed: () {
                   Navigator.pop(context);
-                  Navigator.pushNamed(context, '/');
                 },
                 tooltip: 'Accept Changes',
                 child: Icon(Icons.check, color: Theme.of(context).hintColor),
               ),
             ],
           )),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
