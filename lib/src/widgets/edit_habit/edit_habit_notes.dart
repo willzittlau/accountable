@@ -1,33 +1,17 @@
 import 'package:accountable/src/models/habit.dart';
 import 'package:flutter/material.dart';
 
-class AddHabitNotes extends StatefulWidget {
+class EditHabitNotes extends StatelessWidget {
   final Habit habit;
-  AddHabitNotes({this.habit});
-  AddNotesFieldWidget createState() => AddNotesFieldWidget(habit: habit);
-}
-
-class AddNotesFieldWidget extends State {
-  static TextEditingController _controller;
-  final Habit habit;
-  AddNotesFieldWidget({this.habit});
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+  final TextEditingController _controller = TextEditingController();
+  EditHabitNotes({this.habit});
 
   @override
   Widget build(BuildContext context) {
+    _controller.text = habit.notes;
+    _controller.selection = TextSelection.fromPosition(
+        TextPosition(offset: _controller.text.length));
     _controller.addListener(() {
-      // Sets emoji to first letter of name entry if null
       final String text = _controller.text;
       if (text.length > 0) {
         habit.notes = text;
@@ -48,9 +32,7 @@ class AddNotesFieldWidget extends State {
           constraints: BoxConstraints(maxWidth: 500),
           child: TextFormField(
               onFieldSubmitted: (String str) {
-                setState(() {
-                  _controller.text = str;
-                });
+                habit.notes = str;
               },
               controller: _controller,
               textInputAction: TextInputAction.done,

@@ -25,13 +25,16 @@ class AddHabitScreen extends StatelessWidget {
                     heroTag: "close",
                     onPressed: () {
                       Navigator.pop(context);
+                      Navigator.pushNamed(context, '/');
                     },
                     child:
                         Icon(Icons.close, color: Theme.of(context).hintColor)),
                 FloatingActionButton(
                   heroTag: "check",
                   onPressed: () {
-                    habits.add(habit);
+                    if (habit.emoji.length > 0) {
+                      habits.add(habit);
+                    }
                     Navigator.pop(context);
                     Navigator.pushNamed(context, '/');
                   },

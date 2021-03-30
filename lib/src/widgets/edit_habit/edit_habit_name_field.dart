@@ -1,39 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:accountable/src/models/habit.dart';
 
-class AddNameField extends StatefulWidget {
+class EditNameField extends StatelessWidget {
   final Habit habit;
-  AddNameField({this.habit});
-  AddTextFieldWidget createState() => AddTextFieldWidget(habit: habit);
-}
-
-class AddTextFieldWidget extends State {
-  static TextEditingController _controller;
-  final Habit habit;
-  AddTextFieldWidget({this.habit});
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+  final TextEditingController _controller = TextEditingController();
+  EditNameField({this.habit});
 
   @override
   Widget build(BuildContext context) {
+    _controller.text = habit.name;
+    _controller.selection = TextSelection.fromPosition(
+        TextPosition(offset: _controller.text.length));
     _controller.addListener(() {
       // Sets emoji to first letter of name entry if null
       final String text = _controller.text;
       if (text.length > 0) {
         habit.name = text;
-        habit.emoji.isEmpty
-            ? habit.emoji = habit.name.toUpperCase()[0]
-            : habit.emoji = habit.emoji;
       }
     });
     return Container(
@@ -41,9 +23,9 @@ class AddTextFieldWidget extends State {
       height: 60,
       child: TextField(
           onSubmitted: (String str) {
-            setState(() {
-              _controller.text = str;
-            });
+            if (str.length > 0) {
+              habit.name = str;
+            }
           },
           maxLength: 15,
           controller: _controller,

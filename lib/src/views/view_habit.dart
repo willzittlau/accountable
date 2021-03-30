@@ -1,8 +1,8 @@
 import 'package:accountable/src/models/habit.dart';
 import 'package:accountable/src/views/edit_habit.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
-import 'package:accountable/src/widgets/view_habit_page_icon.dart';
-import 'package:accountable/src/widgets/view_habit_stats.dart';
+import 'package:accountable/src/widgets/view_habit/view_habit_page_icon.dart';
+import 'package:accountable/src/widgets/view_habit/view_habit_stats.dart';
 import 'package:accountable/src/widgets/list_fade.dart';
 import 'package:flutter/material.dart';
 
