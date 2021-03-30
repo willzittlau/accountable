@@ -14,15 +14,15 @@ class ViewHabitStats extends StatelessWidget {
           child: RichText(
             text: TextSpan(
               children: <TextSpan>[
-                new TextSpan(
+                TextSpan(
                     text: 'Current Streak: ',
                     style: TextStyle(
                         fontFamily: 'Yrsa',
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                         color: Theme.of(context).hintColor)),
-                new TextSpan(
-                    text: habit.streak.toString(),
+                TextSpan(
+                    text: habit.startDate.toString(),
                     style: TextStyle(
                         fontFamily: 'Yrsa',
                         fontSize: 26,
@@ -35,14 +35,14 @@ class ViewHabitStats extends StatelessWidget {
           child: RichText(
             text: TextSpan(
               children: <TextSpan>[
-                new TextSpan(
+                TextSpan(
                     text: 'Best: ',
                     style: TextStyle(
                         fontFamily: 'Yrsa',
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                         color: Theme.of(context).hintColor)),
-                new TextSpan(
+                TextSpan(
                     text: habit.best.toString(),
                     style: TextStyle(
                         fontFamily: 'Yrsa',
@@ -56,14 +56,14 @@ class ViewHabitStats extends StatelessWidget {
           child: RichText(
             text: TextSpan(
               children: <TextSpan>[
-                new TextSpan(
+                TextSpan(
                     text: 'Average: ',
                     style: TextStyle(
                         fontFamily: 'Yrsa',
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                         color: Theme.of(context).hintColor)),
-                new TextSpan(
+                TextSpan(
                     text: habit.average.toString(),
                     style: TextStyle(
                         fontFamily: 'Yrsa',
@@ -77,14 +77,14 @@ class ViewHabitStats extends StatelessWidget {
           child: RichText(
             text: TextSpan(
               children: <TextSpan>[
-                new TextSpan(
+                TextSpan(
                     text: 'Number of Resets: ',
                     style: TextStyle(
                         fontFamily: 'Yrsa',
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                         color: Theme.of(context).hintColor)),
-                new TextSpan(
+                TextSpan(
                     text: habit.numResets.toString(),
                     style: TextStyle(
                         fontFamily: 'Yrsa',
@@ -98,14 +98,14 @@ class ViewHabitStats extends StatelessWidget {
           child: RichText(
             text: TextSpan(
               children: <TextSpan>[
-                new TextSpan(
+                TextSpan(
                     text: 'Notes: ',
                     style: TextStyle(
                         fontFamily: 'Yrsa',
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                         color: Theme.of(context).hintColor)),
-                new TextSpan(
+                TextSpan(
                     text: habit.notes,
                     style: TextStyle(
                         fontFamily: 'Yrsa',

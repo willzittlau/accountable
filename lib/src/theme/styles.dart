@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static final ThemeData lightTheme = ThemeData(
       primaryColor: Colors.brown,
-      primarySwatch: Colors.brown,
       accentColor: Colors.white,
       brightness: Brightness.light,
       scaffoldBackgroundColor: Colors.brown[50],
@@ -14,7 +13,6 @@ class AppTheme {
 
   static final ThemeData darkTheme = ThemeData(
       primaryColor: Colors.white,
-      primarySwatch: Colors.brown, // Used for changing DateTime Picker
       accentColor: Colors.grey[600],
       brightness: Brightness.dark,
       hintColor: Colors.white,

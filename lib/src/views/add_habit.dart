@@ -2,7 +2,7 @@ import 'package:accountable/src/models/globals.dart';
 import 'package:accountable/src/models/habit.dart';
 import 'package:accountable/src/providers/emoji_keyboard.dart';
 import 'package:accountable/src/widgets/add_habit/add_habit_page_icon.dart';
-import 'package:accountable/src/widgets/add_habit/add_habit_stats.dart';
+import 'package:accountable/src/widgets/add_habit/add_habit_start_date.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -71,7 +71,7 @@ class AddHabitPage extends StatelessWidget {
                   children: <Widget>[
                     AddHabitPageIcon(habit: habit),
                     Offstage(
-                      child: AddHabitStats(habit: habit),
+                      child: AddHabitStartDate(habit: habit),
                       offstage: context.watch<KeyboardNotifier>().showKeyboard,
                     )
                   ])));
