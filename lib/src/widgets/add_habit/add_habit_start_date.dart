@@ -73,15 +73,6 @@ class DateFieldWidget extends State {
               color: Theme.of(context).hintColor, fontWeight: FontWeight.bold),
         ),
       ),
-      Padding(
-        padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
-        child: Text('Notes: ',
-            style: TextStyle(
-                fontFamily: 'Yrsa',
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).hintColor)),
-      ),
     ]);
   }
 }

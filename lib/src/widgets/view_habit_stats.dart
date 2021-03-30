@@ -22,7 +22,7 @@ class ViewHabitStats extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: Theme.of(context).hintColor)),
                 TextSpan(
-                    text: habit.startDate.toString(),
+                    text: habit.streak.toString(),
                     style: TextStyle(
                         fontFamily: 'Yrsa',
                         fontSize: 26,

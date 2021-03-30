@@ -1,6 +1,7 @@
 import 'package:accountable/src/models/globals.dart';
 import 'package:accountable/src/models/habit.dart';
 import 'package:accountable/src/providers/emoji_keyboard.dart';
+import 'package:accountable/src/widgets/add_habit/add_habit_notes.dart';
 import 'package:accountable/src/widgets/add_habit/add_habit_page_icon.dart';
 import 'package:accountable/src/widgets/add_habit/add_habit_start_date.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
@@ -12,28 +13,32 @@ class AddHabitScreen extends StatelessWidget {
   final habit = new Habit();
   @override
   Widget build(BuildContext context) {
+    bool keyboardIsOpen = MediaQuery.of(context).viewInsets.bottom != 0;
     return Scaffold(
-        floatingActionButton: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            FloatingActionButton(
-                heroTag: "close",
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Icon(Icons.close, color: Theme.of(context).hintColor)),
-            FloatingActionButton(
-              heroTag: "check",
-              onPressed: () {
-                habits.add(habit);
-                Navigator.pop(context);
-                Navigator.pushNamed(context, '/');
-              },
-              child: Icon(Icons.check, color: Theme.of(context).hintColor),
-            ),
-          ],
-        ),
+        floatingActionButton: Visibility(
+            visible: !keyboardIsOpen,
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                FloatingActionButton(
+                    heroTag: "close",
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child:
+                        Icon(Icons.close, color: Theme.of(context).hintColor)),
+                FloatingActionButton(
+                  heroTag: "check",
+                  onPressed: () {
+                    habits.add(habit);
+                    Navigator.pop(context);
+                    Navigator.pushNamed(context, '/');
+                  },
+                  child: Icon(Icons.check, color: Theme.of(context).hintColor),
+                ),
+              ],
+            )),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -72,6 +77,10 @@ class AddHabitPage extends StatelessWidget {
                     AddHabitPageIcon(habit: habit),
                     Offstage(
                       child: AddHabitStartDate(habit: habit),
+                      offstage: context.watch<KeyboardNotifier>().showKeyboard,
+                    ),
+                    Offstage(
+                      child: AddHabitNotes(habit: habit),
                       offstage: context.watch<KeyboardNotifier>().showKeyboard,
                     )
                   ])));
