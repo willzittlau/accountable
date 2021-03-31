@@ -1,6 +1,7 @@
 import 'package:accountable/src/models/globals.dart';
 import 'package:accountable/src/models/habit.dart';
 import 'package:accountable/src/providers/emoji_keyboard.dart';
+import 'package:accountable/src/providers/habit_change_property.dart';
 import 'package:accountable/src/widgets/add_habit/add_habit_notes.dart';
 import 'package:accountable/src/widgets/add_habit/add_habit_page_icon.dart';
 import 'package:accountable/src/widgets/add_habit/add_habit_start_date.dart';
@@ -23,18 +24,21 @@ class AddHabitScreen extends StatelessWidget {
               children: <Widget>[
                 FloatingActionButton(
                     heroTag: "close",
+                    tooltip: 'Cancel',
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child:
-                        Icon(Icons.keyboard_return, color: Theme.of(context).hintColor)),
+                    child: Icon(Icons.keyboard_return,
+                        color: Theme.of(context).hintColor)),
                 FloatingActionButton(
                   heroTag: "check",
+                  tooltip: 'Create Habit',
                   onPressed: () {
                     if (habit.emoji.length > 0) {
                       habits.add(habit);
                     }
                     Navigator.pop(context);
+                    Navigator.pushReplacementNamed(context, '/');
                   },
                   child: Icon(Icons.check, color: Theme.of(context).hintColor),
                 ),

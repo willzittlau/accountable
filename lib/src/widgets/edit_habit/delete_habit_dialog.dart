@@ -74,8 +74,8 @@ class DeleteHabitDialog extends StatelessWidget {
               TextButton(
                   onPressed: () {
                     habits.remove(this.habit);
-                    Navigator.of(context)
-                        .popUntil((route) => route.settings.name == '/');
+                    Navigator.pop(context);
+                    Navigator.pushReplacementNamed(context, '/');
                   },
                   child: Text(
                     btn2Text,

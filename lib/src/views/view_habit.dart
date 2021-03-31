@@ -37,7 +37,7 @@ class ViewHabitScreen extends StatelessWidget {
                   builder: (context) => EditHabitScreen(habit: habit),
                 ));
           },
-          tooltip: 'Change Theme',
+          tooltip: 'Edit this habit',
           label: Text('Edit', style: TextStyle(fontSize: 16)),
           icon:
               Icon((Icons.edit_outlined), color: Theme.of(context).hintColor)),

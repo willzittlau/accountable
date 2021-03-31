@@ -1,5 +1,6 @@
 import 'package:accountable/src/providers/app_theme.dart';
 import 'package:accountable/src/providers/emoji_keyboard.dart';
+import 'package:accountable/src/providers/habit_change_property.dart';
 import 'package:accountable/src/theme/styles.dart';
 import 'package:accountable/src/views/add_habit.dart';
 import 'package:accountable/src/views/home.dart';
@@ -16,6 +17,7 @@ class App extends StatelessWidget {
     return MultiProvider(
         providers: [
           ChangeNotifierProvider<ThemeNotifier>(create: (context) => ThemeNotifier()),
+          ChangeNotifierProvider<HabitNotifier>(create: (context) => HabitNotifier()),
           ChangeNotifierProvider<KeyboardNotifier>(create: (context) => KeyboardNotifier())
         ],
         child: Consumer<ThemeNotifier>(

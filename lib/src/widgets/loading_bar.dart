@@ -1,6 +1,8 @@
 import 'package:accountable/src/models/habit.dart';
+import 'package:accountable/src/providers/habit_change_property.dart';
 import 'package:accountable/src/views/view_habit.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoadingButton extends StatefulWidget {
   final Habit habit;
@@ -19,11 +21,13 @@ class LoadingButtonState extends State<LoadingButton>
   void initState() {
     super.initState();
 
-    controller =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 1500));
-    controller.addListener(() {
+    controller = AnimationController(
+        vsync: this, duration: Duration(milliseconds: 1500));
+    controller.addListener(() async {
       if (controller.value == 1) {
         habit.streak = 0;
+        await Future.delayed(const Duration(milliseconds: 300));
+        Provider.of<HabitNotifier>(context, listen: false).update();
         controller.value = 0;
       }
       setState(() {});
@@ -38,7 +42,7 @@ class LoadingButtonState extends State<LoadingButton>
           GestureDetector(
             onTapDown: (_) => controller.forward(),
             onTapUp: (_) {
-              if (controller.value < 0.075) {
+              if (controller.value < 0.05) {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
