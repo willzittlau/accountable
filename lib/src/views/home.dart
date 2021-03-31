@@ -1,6 +1,7 @@
 import 'package:accountable/src/models/globals.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
 import 'package:accountable/src/widgets/habit_list_icon.dart';
+import 'package:accountable/src/widgets/loading_bar.dart';
 import 'package:accountable/src/widgets/list_fade.dart';
 import 'package:flutter/material.dart';
 
@@ -60,7 +61,10 @@ class HomePage extends StatelessWidget {
                             itemCount: habits.length,
                             itemBuilder: (BuildContext context, int index) {
                               if (index.isEven) {
-                                return HabitListIcon(habit: habits[index]);
+                                return Stack(children: [
+                                  HabitListIcon(habit: habits[index]),
+                                  LoadingButton(habit: habits[index]),
+                                ]);
                               } else {
                                 return Container();
                               }
@@ -77,7 +81,10 @@ class HomePage extends StatelessWidget {
                             itemCount: habits.length,
                             itemBuilder: (BuildContext context, int index) {
                               if (index.isOdd) {
-                                return HabitListIcon(habit: habits[index]);
+                                return Stack(children: [
+                                  HabitListIcon(habit: habits[index]),
+                                  LoadingButton(habit: habits[index]),
+                                ]);
                               } else {
                                 return Container();
                               }

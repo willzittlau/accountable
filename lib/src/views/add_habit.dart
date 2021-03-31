@@ -25,10 +25,9 @@ class AddHabitScreen extends StatelessWidget {
                     heroTag: "close",
                     onPressed: () {
                       Navigator.pop(context);
-                      Navigator.pushNamed(context, '/');
                     },
                     child:
-                        Icon(Icons.arrow_back, color: Theme.of(context).hintColor)),
+                        Icon(Icons.keyboard_return, color: Theme.of(context).hintColor)),
                 FloatingActionButton(
                   heroTag: "check",
                   onPressed: () {
@@ -36,7 +35,6 @@ class AddHabitScreen extends StatelessWidget {
                       habits.add(habit);
                     }
                     Navigator.pop(context);
-                    Navigator.pushNamed(context, '/');
                   },
                   child: Icon(Icons.check, color: Theme.of(context).hintColor),
                 ),
