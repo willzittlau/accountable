@@ -5,18 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 
-class LoadingButton extends StatefulWidget {
+class TapAndHoldProgressButton extends StatefulWidget {
   final Habit habit;
-  LoadingButton({this.habit});
+  TapAndHoldProgressButton({this.habit});
   @override
-  LoadingButtonState createState() => LoadingButtonState(habit: habit);
+  TapAndHoldProgressButtonState createState() => TapAndHoldProgressButtonState(habit: habit);
 }
 
-class LoadingButtonState extends State<LoadingButton>
+class TapAndHoldProgressButtonState extends State<TapAndHoldProgressButton>
     with SingleTickerProviderStateMixin {
   final Habit habit;
   AnimationController controller;
-  LoadingButtonState({this.habit});
+  TapAndHoldProgressButtonState({this.habit});
 
   @override
   void initState() {
