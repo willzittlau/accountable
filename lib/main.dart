@@ -4,19 +4,42 @@ import 'package:accountable/src/providers/habit_change_property.dart';
 import 'package:accountable/src/theme/styles.dart';
 import 'package:accountable/src/views/add_habit.dart';
 import 'package:accountable/src/views/home.dart';
+import 'package:accountable/src/views/login.dart';
 import 'package:accountable/src/views/settings.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-main() async {
+class Auth {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
+  bool isLogged() {
+    try {
+      final user = _firebaseAuth.currentUser;
+      return user != null;
+    } catch (e) {
+      return false;
+    }
+  }
+}
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(App());
+  final Auth _auth = Auth();
+  final bool isLogged = _auth.isLogged();
+  final App app = App(
+    initialRoute: isLogged ? '/home' : '/',
+  );
+  runApp(app);
 }
 
 class App extends StatelessWidget {
   final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
-  
+  final String initialRoute;
+
+  App({this.initialRoute});
+
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: _fbApp,
@@ -42,9 +65,10 @@ class App extends StatelessWidget {
                     darkTheme: AppTheme.darkTheme,
                     themeMode:
                         theme.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-                    initialRoute: '/',
+                    initialRoute: initialRoute,
                     routes: {
-                      '/': (context) => HomeScreen(),
+                      '/': (context) => SignInScreen(),
+                      '/home': (context) => HomeScreen(),
                       '/settings': (context) => SettingsScreen(),
                       '/add': (context) => AddHabitScreen(),
                     },

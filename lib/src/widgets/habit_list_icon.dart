@@ -14,9 +14,7 @@ class HabitListIcon extends StatelessWidget {
     return Consumer<HabitNotifier>(builder: (context, habitNotifier, child) {
       return Padding(
           padding: EdgeInsets.all(20),
-          child: MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: Container(
+          child: Container(
                   padding: EdgeInsets.all(5),
                   width: MediaQuery.of(context).size.width < 1024 ? 120 : 130,
                   height: MediaQuery.of(context).size.width < 1024 ? 120 : 130,
@@ -54,7 +52,7 @@ class HabitListIcon extends StatelessWidget {
                       ),
                     ],
                     color: Theme.of(context).accentColor.withOpacity(0.9),
-                  ))));
+                  )));
     });
   }
 }
