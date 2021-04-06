@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.accountable">
+    package="com.willz.accountable">
    <application
         android:label="accountable"
         android:icon="@mipmap/launcher_icon">

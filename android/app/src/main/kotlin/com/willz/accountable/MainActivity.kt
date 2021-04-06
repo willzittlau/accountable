@@ -1,4 +1,4 @@
-package com.example.accountable
+package com.willz.accountable
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -17,4 +17,10 @@ class Habit {
         notes = notes ?? '',
         numResets = numResets ?? 0,
         startDate = startDate ?? DateTime.now();
+
+  void updateAvg() {
+    this.average = ((this.average + this.streak) ~/ (this.numResets + 1));
+  }
+
+  
 }
