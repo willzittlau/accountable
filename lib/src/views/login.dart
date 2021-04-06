@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:accountable/src/utils/authentication.dart';
-import 'package:accountable/src/widgets/google_sign_in_button.dart';
+import 'package:accountable/src/widgets/login/google_sign_in_button.dart';
 
 class LoginScreen extends StatelessWidget {
   @override

@@ -1,6 +1,5 @@
 import 'package:accountable/src/models/habit.dart';
 import 'package:accountable/src/providers/emoji_keyboard.dart';
-import 'package:accountable/src/views/view_habit.dart';
 import 'package:accountable/src/widgets/edit_habit/edit_habit_notes.dart';
 import 'package:accountable/src/widgets/edit_habit/edit_habit_page_icon.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';

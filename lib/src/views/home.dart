@@ -1,7 +1,7 @@
 import 'package:accountable/src/models/globals.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
-import 'package:accountable/src/widgets/habit_list_icon.dart';
-import 'package:accountable/src/widgets/tap_and_hold_progress_bar.dart';
+import 'package:accountable/src/widgets/home/habit_list_icon.dart';
+import 'package:accountable/src/widgets/home/tap_and_hold_progress_bar.dart';
 import 'package:accountable/src/widgets/list_fade.dart';
 import 'package:flutter/material.dart';
 
