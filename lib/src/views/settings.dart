@@ -1,4 +1,5 @@
 import 'package:accountable/src/providers/app_theme.dart';
+import 'package:accountable/src/utils/authentication.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -60,7 +61,33 @@ class SettingsPage extends StatelessWidget {
                         width: 200,
                         image: context.watch<ThemeNotifier>().isDarkMode
                             ? AssetImage('assets/img/logo.png')
-                            : AssetImage('assets/img/logo-light.png'))))
+                            : AssetImage('assets/img/logo-light.png')))),
+            SizedBox(height: 60),
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(
+                  Theme.of(context).accentColor,
+                ),
+                shape: MaterialStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+              ),
+              onPressed: () async {
+                await Authentication.signOut(context: context);
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil('/', (route) => false);
+              },
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(16, 16, 16, 16),
+                child: Text(
+                  'Sign Out',
+                  style: TextStyle(
+                      fontSize: 16, color: Theme.of(context).hintColor),
+                ),
+              ),
+            ),
           ]));
     });
   }

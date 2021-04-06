@@ -26,6 +26,7 @@ class Auth {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   final Auth _auth = Auth();
   final bool isLogged = _auth.isLogged();
   final App app = App(
@@ -35,48 +36,36 @@ void main() async {
 }
 
 class App extends StatelessWidget {
-  final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
   final String initialRoute;
 
   App({this.initialRoute});
 
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: _fbApp,
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Center(child: Text('Something went wrong :('));
-          } else if (snapshot.hasData) {
-            return MultiProvider(
-                providers: [
-                  ChangeNotifierProvider<ThemeNotifier>(
-                      create: (context) => ThemeNotifier()),
-                  ChangeNotifierProvider<HabitNotifier>(
-                      create: (context) => HabitNotifier()),
-                  ChangeNotifierProvider<KeyboardNotifier>(
-                      create: (context) => KeyboardNotifier())
-                ],
-                child: Consumer<ThemeNotifier>(
-                    builder: (context, ThemeNotifier theme, child) {
-                  return MaterialApp(
-                    title: 'accountable.',
-                    debugShowCheckedModeBanner: false,
-                    theme: AppTheme.lightTheme,
-                    darkTheme: AppTheme.darkTheme,
-                    themeMode:
-                        theme.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-                    initialRoute: initialRoute,
-                    routes: {
-                      '/': (context) => SignInScreen(),
-                      '/home': (context) => HomeScreen(),
-                      '/settings': (context) => SettingsScreen(),
-                      '/add': (context) => AddHabitScreen(),
-                    },
-                  );
-                }));
-          } else {
-            return Center(child: CircularProgressIndicator());
-          }
-        });
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider<ThemeNotifier>(
+              create: (context) => ThemeNotifier()),
+          ChangeNotifierProvider<HabitNotifier>(
+              create: (context) => HabitNotifier()),
+          ChangeNotifierProvider<KeyboardNotifier>(
+              create: (context) => KeyboardNotifier())
+        ],
+        child: Consumer<ThemeNotifier>(
+            builder: (context, ThemeNotifier theme, child) {
+          return MaterialApp(
+            title: 'accountable.',
+            debugShowCheckedModeBanner: false,
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: theme.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+            initialRoute: initialRoute,
+            routes: {
+              '/': (context) => LoginScreen(),
+              '/home': (context) => HomeScreen(),
+              '/settings': (context) => SettingsScreen(),
+              '/add': (context) => AddHabitScreen(),
+            },
+          );
+        }));
   }
 }
