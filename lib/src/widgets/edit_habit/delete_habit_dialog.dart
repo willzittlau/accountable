@@ -75,7 +75,7 @@ class DeleteHabitDialog extends StatelessWidget {
                   onPressed: () {
                     habits.remove(this.habit);
                     Navigator.pop(context);
-                    Navigator.pushReplacementNamed(context, '/');
+                    Navigator.pushReplacementNamed(context, '/home');
                   },
                   child: Text(
                     btn2Text,

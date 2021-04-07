@@ -38,7 +38,7 @@ class AddHabitScreen extends StatelessWidget {
                       habits.add(habit);
                     }
                     Navigator.pop(context);
-                    Navigator.pushReplacementNamed(context, '/');
+                    Navigator.pushReplacementNamed(context, '/home');
                   },
                   child: Icon(Icons.check, color: Theme.of(context).hintColor),
                 ),
