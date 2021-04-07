@@ -1,15 +1,14 @@
-import 'package:accountable/src/models/globals.dart';
 import 'package:accountable/src/views/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:accountable/src/utils/authentication.dart';
 
-class GoogleSignInButton extends StatefulWidget {
+class AppleSignInButton extends StatefulWidget {
   @override
-  _GoogleSignInButtonState createState() => _GoogleSignInButtonState();
+  _AppleSignInButtonState createState() => _AppleSignInButtonState();
 }
 
-class _GoogleSignInButtonState extends State<GoogleSignInButton> {
+class _AppleSignInButtonState extends State<AppleSignInButton> {
   bool _isSigningIn = false;
 
   @override
@@ -61,14 +60,14 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Image(
-                        image: AssetImage("assets/img/google_logo.png"),
+                        image: AssetImage("assets/img/apple_logo.png"),
                         height: 35.0,
                       ),
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.only(left: 15),
                           child: Text(
-                            'Sign in with Google',
+                            'Sign in with Apple ID',
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.black54,

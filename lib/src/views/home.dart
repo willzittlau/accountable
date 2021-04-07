@@ -63,7 +63,8 @@ class HomePage extends StatelessWidget {
                               if (index.isEven) {
                                 return Stack(children: [
                                   HabitListIcon(habit: habits[index]),
-                                  TapAndHoldProgressButton(habit: habits[index]),
+                                  TapAndHoldProgressButton(
+                                      habit: habits[index]),
                                 ]);
                               } else {
                                 return Container();
@@ -83,7 +84,8 @@ class HomePage extends StatelessWidget {
                               if (index.isOdd) {
                                 return Stack(children: [
                                   HabitListIcon(habit: habits[index]),
-                                  TapAndHoldProgressButton(habit: habits[index]),
+                                  TapAndHoldProgressButton(
+                                      habit: habits[index]),
                                 ]);
                               } else {
                                 return Container();

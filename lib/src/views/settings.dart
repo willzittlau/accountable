@@ -1,11 +1,14 @@
 import 'package:accountable/src/providers/app_theme.dart';
 import 'package:accountable/src/utils/authentication.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 // Screen Header
 class SettingsScreen extends StatelessWidget {
+  final User user;
+  SettingsScreen({this.user});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +27,7 @@ class SettingsScreen extends StatelessWidget {
               }),
         ],
       ),
-      body: SettingsPage(),
+      body: SettingsPage(user: user),
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
             Provider.of<ThemeNotifier>(context, listen: false)
@@ -46,6 +49,8 @@ class SettingsScreen extends StatelessWidget {
 
 // Screen Content
 class SettingsPage extends StatelessWidget {
+  final User user;
+  SettingsPage({this.user});
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
@@ -56,13 +61,32 @@ class SettingsPage extends StatelessWidget {
             Padding(
                 padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
                 child: Center(
-                    child: Image(
-                        height: 200,
-                        width: 200,
-                        image: context.watch<ThemeNotifier>().isDarkMode
-                            ? AssetImage('assets/img/logo.png')
-                            : AssetImage('assets/img/logo-light.png')))),
-            SizedBox(height: 60),
+                    child: user.photoURL != null
+                        ? Container(
+                            width: 200,
+                            height: 200,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  image: NetworkImage(user.photoURL.replaceAll("s96-c", "s384-c")),
+                                  fit: BoxFit.fill),
+                            ),
+                          )
+                        : Image(
+                            height: 200,
+                            width: 200,
+                            image: context.watch<ThemeNotifier>().isDarkMode
+                                ? AssetImage('assets/img/logo.png')
+                                : AssetImage('assets/img/logo-light.png')))),
+            SizedBox(height: 40),
+            Padding(
+              padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
+              child: Text(
+                'Logged in as ${user.email}',
+                style:
+                    TextStyle(fontSize: 14, color: Theme.of(context).hintColor),
+              ),
+            ),
             ElevatedButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(

@@ -1,3 +1,6 @@
+import 'package:accountable/src/widgets/login/apple_sign_in_button.dart';
+import 'package:accountable/src/widgets/login/email_sign_in_button.dart';
+import 'package:accountable/src/widgets/login/facebook_sign_in_button.dart';
 import 'package:flutter/material.dart';
 import 'package:accountable/src/utils/authentication.dart';
 import 'package:accountable/src/widgets/login/google_sign_in_button.dart';
@@ -63,7 +66,52 @@ class LoginScreen extends StatelessWidget {
                   if (snapshot.hasError) {
                     return Center(child: Text('Error initializing Firebase'));
                   } else if (snapshot.connectionState == ConnectionState.done) {
+                    return EmailSignInButton();
+                  }
+                  return CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Colors.black,
+                    ),
+                  );
+                },
+              ),
+              FutureBuilder(
+                future: Authentication.initializeFirebase(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return Center(child: Text('Error initializing Firebase'));
+                  } else if (snapshot.connectionState == ConnectionState.done) {
                     return GoogleSignInButton();
+                  }
+                  return CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Colors.black,
+                    ),
+                  );
+                },
+              ),
+              FutureBuilder(
+                future: Authentication.initializeFirebase(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return Center(child: Text('Error initializing Firebase'));
+                  } else if (snapshot.connectionState == ConnectionState.done) {
+                    return AppleSignInButton();
+                  }
+                  return CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Colors.black,
+                    ),
+                  );
+                },
+              ),
+              FutureBuilder(
+                future: Authentication.initializeFirebase(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return Center(child: Text('Error initializing Firebase'));
+                  } else if (snapshot.connectionState == ConnectionState.done) {
+                    return FacebookSignInButton();
                   }
                   return CircularProgressIndicator(
                     valueColor: AlwaysStoppedAnimation<Color>(

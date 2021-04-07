@@ -7,6 +7,7 @@ import 'package:accountable/src/views/add_habit.dart';
 import 'package:accountable/src/views/home.dart';
 import 'package:accountable/src/views/login.dart';
 import 'package:accountable/src/views/settings.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -22,8 +23,9 @@ void main() async {
 
 class App extends StatelessWidget {
   final String initialRoute;
+  final User user;
 
-  App({this.initialRoute});
+  App({this.initialRoute, this.user});
 
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -47,7 +49,7 @@ class App extends StatelessWidget {
             routes: {
               '/': (context) => LoginScreen(),
               '/home': (context) => HomeScreen(),
-              '/settings': (context) => SettingsScreen(),
+              '/settings': (context) => SettingsScreen(user: FirebaseAuth.instance.currentUser),
               '/add': (context) => AddHabitScreen(),
             },
           );
