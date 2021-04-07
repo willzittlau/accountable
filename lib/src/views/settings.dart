@@ -1,7 +1,7 @@
 import 'package:accountable/src/providers/app_theme.dart';
-import 'package:accountable/src/utils/authentication.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
 import 'package:accountable/src/widgets/settings/avatar_image.dart';
+import 'package:accountable/src/widgets/settings/logout_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -70,31 +70,7 @@ class SettingsPage extends StatelessWidget {
                     TextStyle(fontSize: 14, color: Theme.of(context).hintColor),
               ),
             ),
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(
-                  Theme.of(context).accentColor,
-                ),
-                shape: MaterialStateProperty.all(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                ),
-              ),
-              onPressed: () async {
-                await Authentication.signOut(context: context);
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil('/', (route) => false);
-              },
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(16, 16, 16, 16),
-                child: Text(
-                  'Sign Out',
-                  style: TextStyle(
-                      fontSize: 16, color: Theme.of(context).hintColor),
-                ),
-              ),
-            ),
+            LogoutButton(),
           ]));
     });
   }
