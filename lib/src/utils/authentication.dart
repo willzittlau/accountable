@@ -6,7 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 class Authentication {
-  static SnackBar customSnackBar({ String content}) {
+  static SnackBar customSnackBar({String content}) {
     return SnackBar(
       backgroundColor: Colors.black,
       content: Text(
@@ -16,23 +16,18 @@ class Authentication {
     );
   }
 
-  static Future<FirebaseApp> initializeFirebase({
-    BuildContext context,
-  }) async {
+  static Future<FirebaseApp> initializeFirebase() async {
     FirebaseApp firebaseApp = await Firebase.initializeApp();
-
-    User user = FirebaseAuth.instance.currentUser;
-
-    if (user != null) {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => HomePage(
-          ),
-        ),
-      );
-    }
-
     return firebaseApp;
+  }
+
+  static bool userIsLogged() {
+    User user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   static Future<User> signInWithGoogle({BuildContext context}) async {

@@ -32,37 +32,36 @@ class LoginScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 20),
                     Container(
-                      width: MediaQuery.of(context).size.width * 0.75,
-      child:FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child:Text(
-                      'accountable.',
-                      style: TextStyle(
-                          fontFamily: 'CooperBlack',
-                          fontSize: 72,
-                          color: Colors.black),
-                    ))),
+                        width: MediaQuery.of(context).size.width * 0.75,
+                        child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              'accountable.',
+                              style: TextStyle(
+                                  fontFamily: 'CooperBlack',
+                                  fontSize: 72,
+                                  color: Colors.black),
+                            ))),
                     Container(
-                      width: MediaQuery.of(context).size.width * 0.5,
-      child:FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child:Text(
-                      'become a better you',
-                      style: TextStyle(
-                        fontFamily: 'Yrsa',
-                        color: Colors.black,
-                        fontSize: 40,
-                        
-                      ),
-                    ))),
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              'become a better you',
+                              style: TextStyle(
+                                fontFamily: 'Yrsa',
+                                color: Colors.black,
+                                fontSize: 40,
+                              ),
+                            ))),
                   ],
                 ),
               ),
               FutureBuilder(
-                future: Authentication.initializeFirebase(context: context),
+                future: Authentication.initializeFirebase(),
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
-                    return Center (child: Text('Error initializing Firebase'));
+                    return Center(child: Text('Error initializing Firebase'));
                   } else if (snapshot.connectionState == ConnectionState.done) {
                     return GoogleSignInButton();
                   }

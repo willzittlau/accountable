@@ -2,35 +2,20 @@ import 'package:accountable/src/providers/app_theme.dart';
 import 'package:accountable/src/providers/emoji_keyboard.dart';
 import 'package:accountable/src/providers/habit_change_property.dart';
 import 'package:accountable/src/theme/styles.dart';
+import 'package:accountable/src/utils/authentication.dart';
 import 'package:accountable/src/views/add_habit.dart';
 import 'package:accountable/src/views/home.dart';
 import 'package:accountable/src/views/login.dart';
 import 'package:accountable/src/views/settings.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class Auth {
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-
-  bool isLogged() {
-    try {
-      final user = _firebaseAuth.currentUser;
-      return user != null;
-    } catch (e) {
-      return false;
-    }
-  }
-}
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  final Auth _auth = Auth();
-  final bool isLogged = _auth.isLogged();
+  await Authentication.initializeFirebase();
+  final bool isLoggedIn = Authentication.userIsLogged();
   final App app = App(
-    initialRoute: isLogged ? '/home' : '/',
+    initialRoute: isLoggedIn ? '/home' : '/',
   );
   runApp(app);
 }
