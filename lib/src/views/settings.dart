@@ -1,6 +1,7 @@
 import 'package:accountable/src/providers/app_theme.dart';
 import 'package:accountable/src/utils/authentication.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
+import 'package:accountable/src/widgets/settings/avatar_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -58,31 +59,13 @@ class SettingsPage extends StatelessWidget {
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-            Padding(
-                padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
-                child: Center(
-                    child: user.photoURL != null
-                        ? Container(
-                            width: 200,
-                            height: 200,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                  image: NetworkImage(user.photoURL.replaceAll("s96-c", "s384-c")),
-                                  fit: BoxFit.fill),
-                            ),
-                          )
-                        : Image(
-                            height: 200,
-                            width: 200,
-                            image: context.watch<ThemeNotifier>().isDarkMode
-                                ? AssetImage('assets/img/logo.png')
-                                : AssetImage('assets/img/logo-light.png')))),
+            AvatarImage(user: user),
             SizedBox(height: 40),
             Padding(
               padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
               child: Text(
                 'Logged in as ${user.email}',
+                textAlign: TextAlign.center,
                 style:
                     TextStyle(fontSize: 14, color: Theme.of(context).hintColor),
               ),
