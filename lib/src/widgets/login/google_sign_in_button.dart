@@ -55,7 +55,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                   }
                 },
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 10, 0, 10),
+                  padding: const EdgeInsets.fromLTRB(5, 10, 0, 10),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -70,7 +70,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                           child: Text(
                             'Sign in with Google',
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 18,
                               color: Colors.black54,
                               fontWeight: FontWeight.w600,
                             ),
