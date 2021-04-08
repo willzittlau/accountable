@@ -9,7 +9,8 @@ class TapAndHoldProgressButton extends StatefulWidget {
   final Habit habit;
   TapAndHoldProgressButton({this.habit});
   @override
-  TapAndHoldProgressButtonState createState() => TapAndHoldProgressButtonState(habit: habit);
+  TapAndHoldProgressButtonState createState() =>
+      TapAndHoldProgressButtonState(habit: habit);
 }
 
 class TapAndHoldProgressButtonState extends State<TapAndHoldProgressButton>
@@ -26,8 +27,8 @@ class TapAndHoldProgressButtonState extends State<TapAndHoldProgressButton>
         vsync: this, duration: Duration(milliseconds: 1500));
     controller.addListener(() async {
       if (controller.value == 1) {
-        habit.streak = 0;
-        habit.numResets += 1;
+        // update habit
+        habit.manuallyResetStreak();
         await Future.delayed(const Duration(milliseconds: 300));
         Provider.of<HabitNotifier>(context, listen: false).update();
         controller.value = 0;

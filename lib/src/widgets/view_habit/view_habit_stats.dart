@@ -22,10 +22,12 @@ class ViewHabitStats extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: Theme.of(context).hintColor)),
                 TextSpan(
-                    text: habit.streak.toString(),
+                    text: habit.streak == 1
+                        ? habit.streak.toString() + ' day'
+                        : habit.streak.toString() + ' days',
                     style: TextStyle(
                         fontFamily: 'Yrsa',
-                        fontSize: 26,
+                        fontSize: 24,
                         color: Theme.of(context).hintColor)),
               ],
             ),
@@ -43,10 +45,12 @@ class ViewHabitStats extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: Theme.of(context).hintColor)),
                 TextSpan(
-                    text: habit.best.toString(),
+                    text: habit.best == 1
+                        ? habit.best.toString() + ' day'
+                        : habit.best.toString() + ' days',
                     style: TextStyle(
                         fontFamily: 'Yrsa',
-                        fontSize: 26,
+                        fontSize: 24,
                         color: Theme.of(context).hintColor)),
               ],
             ),
@@ -64,10 +68,12 @@ class ViewHabitStats extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: Theme.of(context).hintColor)),
                 TextSpan(
-                    text: habit.average.toString(),
+                    text: habit.average == 1
+                        ? habit.average.toString() + ' day'
+                        : habit.average.toString() + ' days',
                     style: TextStyle(
                         fontFamily: 'Yrsa',
-                        fontSize: 26,
+                        fontSize: 24,
                         color: Theme.of(context).hintColor)),
               ],
             ),
@@ -88,7 +94,7 @@ class ViewHabitStats extends StatelessWidget {
                     text: habit.numResets.toString(),
                     style: TextStyle(
                         fontFamily: 'Yrsa',
-                        fontSize: 26,
+                        fontSize: 24,
                         color: Theme.of(context).hintColor)),
               ],
             ),
