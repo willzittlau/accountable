@@ -22,6 +22,19 @@ class Habit {
         startDate = startDate ?? DateTime.now().toUtc(),
         lastUpdated = startDate;
 
+  Map<String, dynamic> toJson() => {
+      'emoji': emoji,
+      'name': name,
+      'notes' : notes,
+      'streak' : streak,
+      'average' : average,
+      'best' : best,
+      'numResets' : numResets,
+      'totalDays' : totalDays,
+      'startDate' : startDate.toIso8601String(),
+      'lastUpdated' : lastUpdated.toIso8601String()
+  };
+
 // placeholder for when setting is made
   void manuallyUpdateStreak() {
     this.streak += 1;
