@@ -8,7 +8,8 @@ List<Habit> habits = [
       streak: 1,
       average: 2.0,
       best: 3,
-      numResets: 4),
+      numResets: 4,
+      startDate: DateTime.utc(1997, 2, 12)),
   Habit(
       name: 'Yoga',
       emoji: '🧘',
@@ -16,7 +17,8 @@ List<Habit> habits = [
       streak: 4,
       average: 2.0,
       best: 1,
-      numResets: 2),
+      numResets: 2,
+      startDate: DateTime.utc(2021, 4, 1)),
   Habit(
       name: 'Vegan',
       emoji: '🌱',
@@ -24,7 +26,8 @@ List<Habit> habits = [
       streak: 3,
       average: 41.0,
       best: 15,
-      numResets: 13),
+      numResets: 13,
+      startDate: DateTime.utc(2020, 2, 12)),
   Habit(
       name: 'Code',
       emoji: '👨‍💻',
@@ -32,15 +35,18 @@ List<Habit> habits = [
       streak: 11,
       average: 11.0,
       best: 11,
-      numResets: 11),
+      numResets: 11,
+      startDate: DateTime.utc(2020, 12, 17)),
   Habit(
       name: 'Workout',
       emoji: '💪',
-      notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      notes:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       streak: 19,
       average: 91.0,
       best: 19,
-      numResets: 91),
+      numResets: 91,
+      startDate: DateTime.utc(2021, 2, 12)),
   Habit(
       name: 'Meditate',
       emoji: '🙏',
@@ -48,7 +54,8 @@ List<Habit> habits = [
       streak: 15,
       average: 51.0,
       best: 15,
-      numResets: 51),
+      numResets: 51,
+      startDate: DateTime.utc(2021, 1, 1)),
   Habit(
       name: 'Sleep',
       emoji: '💤',
@@ -56,7 +63,8 @@ List<Habit> habits = [
       streak: 1,
       average: 1.0,
       best: 1,
-      numResets: 1),
+      numResets: 1,
+      startDate: DateTime.utc(2021, 3, 23)),
   Habit(
       name: 'Read',
       emoji: '📚',
@@ -64,7 +72,8 @@ List<Habit> habits = [
       streak: 1,
       average: 1.0,
       best: 1,
-      numResets: 1),
+      numResets: 1,
+      startDate: DateTime.utc(2021, 4, 4)),
   Habit(
       name: 'French',
       emoji: '🇫🇷',
@@ -72,5 +81,6 @@ List<Habit> habits = [
       streak: 1,
       average: 1.0,
       best: 1,
-      numResets: 1),
+      numResets: 1,
+      startDate: DateTime.utc(2021, 4, 7)),
 ];

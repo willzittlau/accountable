@@ -1,4 +1,5 @@
 import 'package:accountable/src/models/globals.dart';
+import 'package:accountable/src/models/habit.dart';
 import 'package:accountable/src/widgets/app_bar_title.dart';
 import 'package:accountable/src/widgets/home/habit_list_icon.dart';
 import 'package:accountable/src/widgets/home/tap_and_hold_progress_bar.dart';
@@ -9,6 +10,11 @@ import 'package:flutter/material.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+      for (Habit habit in habits) {
+        habit.updateBest();
+        habit.updateAvg();
+        habit.autoUpdateStreak();
+  }
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,

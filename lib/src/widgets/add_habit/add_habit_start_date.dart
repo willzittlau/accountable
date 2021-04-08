@@ -42,7 +42,7 @@ class DateFieldWidget extends State {
     );
     if (picked != null)
       setState(() {
-        habit.startDate = picked;
+        habit.startDate = picked.toUtc();
       });
   }
 

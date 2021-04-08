@@ -69,8 +69,8 @@ class ViewHabitStats extends StatelessWidget {
                         color: Theme.of(context).hintColor)),
                 TextSpan(
                     text: habit.average == 1.0
-                        ? habit.average.toStringAsFixed(1) + ' day'
-                        : habit.average.toStringAsFixed(1) + ' days',
+                        ? habit.average.toStringAsFixed(2) + ' day'
+                        : habit.average.toStringAsFixed(2) + ' days',
                     style: TextStyle(
                         fontFamily: 'Yrsa',
                         fontSize: 24,

@@ -6,10 +6,11 @@ class Habit {
   double average;
   int best;
   int numResets;
+  int totalDays;
   DateTime startDate;
   DateTime lastUpdated;
 
-  Habit({emoji, name, streak, average, best, notes, numResets, startDate, lastUpdated})
+  Habit({emoji, name, streak, average, best, notes, numResets, totalDays, startDate, lastUpdated})
       : emoji = emoji ?? '',
         name = name ?? '',
         streak = streak ?? 0,
@@ -17,41 +18,46 @@ class Habit {
         best = best ?? 0,
         notes = notes ?? '',
         numResets = numResets ?? 0,
-        startDate = startDate ?? DateTime.now(),
+        totalDays = totalDays ?? 0,
+        startDate = startDate ?? DateTime.now().toUtc(),
         lastUpdated = startDate;
 
 // placeholder for when setting is made
   void manuallyUpdateStreak() {
     this.streak += 1;
-    this.lastUpdated = DateTime.now();
+    this.lastUpdated = DateTime.now().toUtc();
   }
 
   void autoUpdateStreak() {
-    this.streak = DateTime.now().difference(this.startDate).inDays;
-    this.lastUpdated = DateTime.now();
+    this.streak = DateTime.now().toUtc().difference(this.startDate).inDays;
+    this.lastUpdated = DateTime.now().toUtc();
   }
 
   void updateBest() {
-    this.streak >= this.best ? this.best = this.streak : this.best = this.best;
+    if (this.streak >= this.best) this.best = this.streak;
   }
 
   void updateAvg() {
-    this.average = ((this.average + this.streak) / (this.numResets + 1));
+    this.streak == 0 ? 
+    this.average = (this.totalDays / this.numResets) :
+    this.average = ((this.totalDays + this.streak) / (this.numResets + 1));
   }
 
 // placeholder for when setting is made
   void autoResetStreak () {
-    if (DateTime.now().difference(this.lastUpdated).inDays > 1) {
+    if (DateTime.now().toUtc().difference(this.lastUpdated).inDays > 1) {
+    this.totalDays += this.streak;
     this.streak = 0;
-    this.startDate = DateTime.now();
+    this.startDate = DateTime.now().toUtc();
     this.numResets += 1;
     this.updateAvg();
     }
   }
 
   void manuallyResetStreak() {
+    this.totalDays += this.streak;
     this.streak = 0;
-    this.startDate = DateTime.now();
+    this.startDate = DateTime.now().toUtc();
     this.numResets += 1;
     this.updateAvg();
   }
