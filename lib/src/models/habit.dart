@@ -3,7 +3,7 @@ class Habit {
   String name;
   String notes;
   int streak;
-  int average;
+  double average;
   int best;
   int numResets;
   DateTime startDate;
@@ -13,7 +13,7 @@ class Habit {
       : emoji = emoji ?? '',
         name = name ?? '',
         streak = streak ?? 0,
-        average = average ?? 0,
+        average = average ?? 0.0,
         best = best ?? 0,
         notes = notes ?? '',
         numResets = numResets ?? 0,
@@ -36,7 +36,7 @@ class Habit {
   }
 
   void updateAvg() {
-    this.average = ((this.average + this.streak) ~/ (this.numResets + 1));
+    this.average = ((this.average + this.streak) / (this.numResets + 1));
   }
 
 // placeholder for when setting is made
