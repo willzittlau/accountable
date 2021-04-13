@@ -4,8 +4,11 @@ import 'package:accountable/src/providers/habit_change_property.dart';
 import 'package:accountable/src/theme/styles.dart';
 import 'package:accountable/src/utils/authentication.dart';
 import 'package:accountable/src/views/add_habit.dart';
+import 'package:accountable/src/views/email_signup.dart';
+import 'package:accountable/src/views/forgot_password.dart';
 import 'package:accountable/src/views/home.dart';
 import 'package:accountable/src/views/login.dart';
+import 'package:accountable/src/views/email_login.dart';
 import 'package:accountable/src/views/settings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -51,6 +54,9 @@ class App extends StatelessWidget {
               '/home': (context) => HomeScreen(),
               '/settings': (context) => SettingsScreen(user: FirebaseAuth.instance.currentUser),
               '/add': (context) => AddHabitScreen(),
+              '/login': (context) => EmailSignInScreen(),
+              '/signup': (context) => EmailSignUpScreen(),
+              '/forgot-password': (context) => ForgotPassword(),
             },
           );
         }));
