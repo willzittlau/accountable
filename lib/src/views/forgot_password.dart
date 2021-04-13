@@ -4,17 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class ForgotPassword extends StatefulWidget {
-  final String message =
-      "An email has just been sent to you, Click the link provided to complete password reset";
-
   @override
   _ForgotPasswordState createState() => _ForgotPasswordState();
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
   final _auth = FirebaseAuth.instance;
-
   final _formKey = GlobalKey<FormState>();
+
   String _email;
 
   _passwordReset() async {
@@ -45,10 +42,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         bottomOpacity: 0.0,
         elevation: 0.0,
         title:
-            AppBarTitle(title: 'Forgot?', subtitle: 'reset your password'),
+            AppBarTitle(title: 'accountable.', subtitle: 'become a better you'),
         actions: <Widget>[
           IconButton(
-              icon: Icon(Icons.close, color: Theme.of(context).hintColor),
+              icon: Icon(Icons.keyboard_return, color: Theme.of(context).hintColor),
               onPressed: () {
                 Navigator.pop(context);
               }),
@@ -64,10 +61,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    'Email Your Email',
-                    style: TextStyle(fontSize: 30, color: Colors.black),
-                  ),
+                  Text('Enter your email.',
+                      style: TextStyle(
+                        fontSize: 32,
+                        color: Colors.black,
+                        fontFamily: 'Yrsa',
+                        fontWeight: FontWeight.bold,
+                      )),
                   TextFormField(
                     onSaved: (newEmail) {
                       _email = newEmail;
@@ -93,20 +93,25 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
-                  RaisedButton(
-                    child: Text('Send Email'),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  OutlinedButton(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.brown[50]),
+                      side: MaterialStateProperty.all(
+                          BorderSide(color: Colors.black, width: 1.5)),
+                    ),
                     onPressed: () {
                       _passwordReset();
                       print(_email);
                     },
+                    child: Text(
+                      'Submit',
+                      style: TextStyle(fontSize: 18, color: Colors.black),
+                    ),
                   ),
-                  FlatButton(
-                    child: Text('Sign In'),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/login');
-                    },
-                  )
                 ],
               ),
             ),

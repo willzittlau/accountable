@@ -11,11 +11,9 @@ class EmailSignInScreen extends StatefulWidget {
 
 class _EmailSignInScreenState extends State<EmailSignInScreen> {
   final _formKey = GlobalKey<FormState>();
-
   final _auth = FirebaseAuth.instance;
 
   String _email;
-
   String _password;
 
   Future signIn() async {
@@ -32,14 +30,14 @@ class _EmailSignInScreenState extends State<EmailSignInScreen> {
         );
       }
     } catch (e) {
-        showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return NotificationDialog(
-                  title: "There was an error.",
-                  description:
-                      "Please check your email and password and try again!");
-            });
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return NotificationDialog(
+                title: "There was an error.",
+                description:
+                    "Please check your email and password and try again!");
+          });
       print(e);
     }
   }
@@ -57,7 +55,7 @@ class _EmailSignInScreenState extends State<EmailSignInScreen> {
             AppBarTitle(title: 'settings.', subtitle: 'edit your experience'),
         actions: <Widget>[
           IconButton(
-              icon: Icon(Icons.close, color: Theme.of(context).hintColor),
+              icon: Icon(Icons.keyboard_return, color: Theme.of(context).hintColor),
               onPressed: () {
                 Navigator.pop(context);
               }),
@@ -74,13 +72,13 @@ class _EmailSignInScreenState extends State<EmailSignInScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      'Sign In Here',
-                      style: TextStyle(fontSize: 30, color: Colors.black),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
+                    Text('Sign in.',
+                        style: TextStyle(
+                          fontSize: 32,
+                          color: Colors.black,
+                          fontFamily: 'Yrsa',
+                          fontWeight: FontWeight.bold,
+                        )),
                     TextFormField(
                       onSaved: (newEmail) {
                         _email = newEmail;
@@ -132,24 +130,33 @@ class _EmailSignInScreenState extends State<EmailSignInScreen> {
                         ),
                       ),
                     ),
-                    RaisedButton(
+                    SizedBox(
+                      height: 20,
+                    ),
+                    OutlinedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Colors.brown[50]),
+                        side: MaterialStateProperty.all(
+                            BorderSide(color: Colors.black, width: 1.5)),
+                      ),
                       onPressed: () {
                         signIn();
                       },
                       child: Text(
                         'Submit',
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(fontSize: 18, color: Colors.black),
                       ),
                     ),
-                    FlatButton(
+                    TextButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/forgot-password');
                       },
                       child: Text(
-                        'Forgot Password?',
-                        style: TextStyle(fontSize: 12),
+                        'Forgot your password?',
+                        style: TextStyle(color: Colors.black),
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),

@@ -4,21 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class EmailSignUpScreen extends StatefulWidget {
-  static String id = 'sign-up';
-  final String message =
-      "An email has just been sent to you, Click the link provided to complete registration";
-
   @override
   _EmailSignUpScreenState createState() => _EmailSignUpScreenState();
 }
 
 class _EmailSignUpScreenState extends State<EmailSignUpScreen> {
   final _auth = FirebaseAuth.instance;
-
   final _formKey = GlobalKey<FormState>();
 
   String _email;
-
   String _password;
 
   Future signUp() async {
