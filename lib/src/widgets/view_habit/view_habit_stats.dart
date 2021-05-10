@@ -10,7 +10,7 @@ class ViewHabitStats extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
       Padding(
-          padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+          padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
           child: RichText(
             text: TextSpan(
               children: <TextSpan>[
