@@ -27,7 +27,6 @@ class ViewHabitCalendar extends StatelessWidget {
     CalendarCarousel _calendarCarousel;
 
     for (int i = 0; i < len; i++) {
-      print(markedDates[i]);
       _markedDateMap.add(
         markedDates[i],
         new Event(
