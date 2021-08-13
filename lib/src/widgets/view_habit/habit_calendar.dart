@@ -19,17 +19,15 @@ class ViewHabitCalendar extends StatelessWidget {
 
     for (int i= 0; i < habit.streak; i++) {
       markedDates.add(
-        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day).subtract(Duration(days: i))
+        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day - i)
       );
     }
-          markedDates.add(
-        DateTime(2021, 3, 5)
-      );
 
     var len = markedDates.length;
     CalendarCarousel _calendarCarousel;
 
     for (int i = 0; i < len; i++) {
+      print(markedDates[i]);
       _markedDateMap.add(
         markedDates[i],
         new Event(
