@@ -26,32 +26,35 @@ class HomeScreen extends StatelessWidget {
       habit.updateAvg();
       habit.autoUpdateStreak();
     }
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.transparent,
-        bottomOpacity: 0.0,
-        elevation: 0.0,
-        title:
-            AppBarTitle(title: 'accountable.', subtitle: 'become a better you'),
-        actions: <Widget>[
-          IconButton(
+    return WillPopScope(
+        onWillPop: () async => false,
+        child: Scaffold(
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.transparent,
+            bottomOpacity: 0.0,
+            elevation: 0.0,
+            title: AppBarTitle(
+                title: 'accountable.', subtitle: 'become a better you'),
+            actions: <Widget>[
+              IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/settings');
+                  },
+                  icon: Icon(Icons.more_horiz,
+                      color: Theme.of(context).hintColor))
+            ],
+          ),
+          body: MediaQuery.of(context).size.width < 800
+              ? HomePage()
+              : Center(child: HomePage()),
+          floatingActionButton: FloatingActionButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/settings');
+                Navigator.pushNamed(context, '/add');
               },
-              icon: Icon(Icons.more_horiz, color: Theme.of(context).hintColor))
-        ],
-      ),
-      body: MediaQuery.of(context).size.width < 800
-          ? HomePage()
-          : Center(child: HomePage()),
-      floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/add');
-          },
-          tooltip: 'Add a habit',
-          child: Icon(Icons.add)),
-    );
+              tooltip: 'Add a habit',
+              child: Icon(Icons.add)),
+        ));
   }
 }
 
